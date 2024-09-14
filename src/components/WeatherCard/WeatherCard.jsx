@@ -1,12 +1,35 @@
-import moonlight from "../../images/moonlight.png";
-
 import "./WeatherCard.css";
+import { weatherOptions, defaultWeatherOptions } from "../../utils/constants";
 
-function WeatherCard() {
+function WeatherCard({ weatherData }) {
+  const filteredOptions = weatherOptions.filter((option) => {
+    return (
+      option.day === weatherData.isDay &&
+      option.condition === weatherData.condition
+    );
+  });
+
+  // ? is for if filteredOptions is undefined or empy
+  // then dont get the url, options chaining I
+  //believe is what he called it
+  // const weatherOptionUrl = filteredOptions[0]?.url;
+
+  let weatherOption;
+  if (filteredOptions.length === 0) {
+    weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
+  } else {
+    weatherOption = filteredOptions[0];
+  }
+
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">75 &deg; F</p>
-      <img src={moonlight} alt="moonlight" className="weather-card__image" />
+      <p className="weather-card__temp"> {weatherData.temp.F} &deg; F</p>
+      <img
+        src={weatherOption?.url}
+        alt={`Card showing ${weatherOption?.day ? "day" : "night"}
+        time ${weatherOption?.condition} weather`}
+        className="weather-card__image"
+      />
     </section>
   );
 }

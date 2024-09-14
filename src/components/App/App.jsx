@@ -1,16 +1,21 @@
 // wrapper for the whole application
 // therefore, is the parent of other top-level components
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import { coordinates, APIkey } from "../../utils/constants";
 
 function App() {
-  //set default value to "cold", normally it would be empty ""
-  const [weatherData, setweatherData] = useState({ type: "cold" });
+  const [weatherData, setWeatherData] = useState({
+    type: "",
+    temp: { F: 999 },
+    city: "",
+  });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState("");
 
@@ -27,13 +32,24 @@ function App() {
     setSelectedCard(card);
   };
 
+  // pass a empty array the function will only get used once
+  // when it first loads
+  useEffect(() => {
+    getWeather(coordinates, APIkey)
+      .then((data) => {
+        const filteredData = filterWeatherData(data);
+        setWeatherData(filteredData);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <div className="page">
       <div className="page_content">
         {/* its common to rename handlers, setActiveModal in 
         setActiveModal={setActiveModal} to handleAddClick so 
         now its handleAddClick={handleAddClick} */}
-        <Header handleAddClick={handleAddClick} />
+        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         {/* have to pass handleCardClick to the component that 
         contains ItemCard which is main. If you cant remember
         where this is then you can always search it.
