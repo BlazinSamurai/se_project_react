@@ -7,6 +7,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 
@@ -56,6 +57,7 @@ function App() {
         <ItemToFind, ex <ItemCard and itll show you what component 
         it is apart of  */}
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Footer />
       </div>
       <ModalWithForm
         title="New garment"
@@ -101,6 +103,7 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
+
       <ItemModal
         activeModal={activeModal}
         card={selectedCard}

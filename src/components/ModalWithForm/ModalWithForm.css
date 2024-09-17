@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url(/src/vendor/cabinet-grotesk/CabinetGrotesk-Regular.otf);
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -15,8 +20,13 @@
   visibility: visible;
 }
 
+/* Cabinet Grotesk */
 .modal__title {
   margin: 0;
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
 }
 
 .modal__close {
@@ -30,8 +40,11 @@
   position: relative;
   padding: 28px 28px 36px;
   max-width: 496px;
+  height: 436px;
   box-sizing: border-box;
   width: 100%;
+  border-radius: 20px;
+  border: 1px;
 }
 
 .modal__form {

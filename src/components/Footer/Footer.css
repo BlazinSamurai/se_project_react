@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url(/src/vendor/cabinet-grotesk/CabinetGrotesk-Regular.otf);
+}
+
+.footer {
+}
+
+.footer__text {
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
