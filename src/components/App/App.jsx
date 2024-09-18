@@ -66,7 +66,7 @@ function App() {
         onClose={closeActiveModal}
       >
         {/* htmlFor and id should match */}
-        <label htmlFor="name" className="modal__label">
+        <label htmlFor="name" className="modal__label modal__label_span">
           Name{" "}
           <input
             type="text"
@@ -74,8 +74,9 @@ function App() {
             id="name"
             placeholder="Name"
           />
+          <span className="modal__span-divider"></span>
         </label>
-        <label htmlFor="imageUrl" className="modal__label">
+        <label htmlFor="imageUrl" className="modal__label modal__label_span">
           Image{" "}
           <input
             type="text"
@@ -83,6 +84,7 @@ function App() {
             id="imageUrl"
             placeholder="Image URL"
           />
+          <span className="modal__span-divider"></span>
         </label>
         <fieldset className="modal__radio-buttons">
           <legend className="modal__legend">Select the weather type:</legend>
