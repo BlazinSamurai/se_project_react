@@ -19,3 +19,17 @@
   list-style-type: none;
   gap: 21px;
 }
+
+@media screen and (max-width: 375px) {
+  .cards__text {
+    width: 340px;
+    position: absolute;
+    top: 246px;
+  }
+
+  .cards__list {
+    max-width: 343px;
+    display: grid;
+    grid-template-columns: 164px 164px;
+  }
+}

@@ -13,4 +13,17 @@
 
 .card__image {
   width: 100%;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 375px) {
+  .card {
+    height: 164px;
+    width: 164px;
+  }
+
+  .card__image {
+    width: 164px;
+    height: 164px;
+  }
 }

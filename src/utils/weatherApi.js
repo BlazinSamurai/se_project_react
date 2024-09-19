@@ -14,10 +14,12 @@ export const filterWeatherData = (data) => {
   //   console.log(data);
   //   console.log(data.main.temp);
 
+  let wholeNumTemp;
   const result = {};
   result.city = data.name;
-  //   result.temp = Math.trunc(data.main.temp);
-  result.temp = { F: data.main.temp };
+  wholeNumTemp = Math.trunc(data.main.temp);
+  // result.temp = { F: wholeNumTemp };
+  result.temp = { F: 60 };
   result.type = getWeatherType(result.temp.F);
   // result.type = 99;
   result.condition = data.weather[0].main.toLowerCase();
