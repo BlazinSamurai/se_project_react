@@ -41,3 +41,37 @@
   line-height: 24.8px;
   text-align: left;
 }
+
+@media screen and (max-width: 375px) {
+  .header {
+    flex-direction: column-reverse;
+    /* flex-wrap: wrap;
+    align-content: center; */
+    background-color: white;
+    border-radius: 10px;
+    width: 343px;
+    height: 208px;
+    padding: 0;
+  }
+
+  .header__logo {
+    visibility: hidden;
+  }
+
+  .header__date-and-location {
+    visibility: hidden;
+  }
+
+  .header__add-clothes-btn {
+    margin: 24px 0 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: 116px;
+    height: 24px;
+  }
+
+  .header__user-container {
+    position: absolute;
+    top: 60px;
+  }
+}

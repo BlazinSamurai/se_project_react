@@ -29,3 +29,10 @@
   object-position: right top;
   width: 100%;
 }
+
+@media screen and (max-width: 375px) {
+  .weather-card__image,
+  .weather-card__temp {
+    visibility: hidden;
+  }
+}
