@@ -18,7 +18,11 @@ function App() {
     city: "",
   });
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState("");
+  const [selectedCard, setSelectedCard] = useState({
+    link: "",
+    name: "",
+    weather: "",
+  });
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -29,7 +33,6 @@ function App() {
   };
 
   const handleCardClick = (card) => {
-    console.log(card.link);
     setActiveModal("preview");
     setSelectedCard(card);
   };

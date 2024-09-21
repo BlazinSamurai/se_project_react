@@ -2,9 +2,6 @@ import "./ItemModal.css";
 import defaultImage from "../../images/default_clothing.png";
 
 function ItemModal({ activeModal, onClose, card }) {
-  // console.log(defaultImage);
-  // console.log(card.link);
-
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
@@ -13,11 +10,13 @@ function ItemModal({ activeModal, onClose, card }) {
           type="button"
           className="modal__close modal__close-item"
         ></button>
-        <img
-          src={card.link || defaultImage}
-          alt={card.name}
-          className="modal_image"
-        />
+        {card.link && (
+          <img
+            src={card.link || defaultImage}
+            alt={card.name}
+            className="modal_image"
+          />
+        )}
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>

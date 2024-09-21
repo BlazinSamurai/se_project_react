@@ -18,10 +18,9 @@ export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
   wholeNumTemp = Math.trunc(data.main.temp);
-  // result.temp = { F: wholeNumTemp };
-  result.temp = { F: 60 };
+  result.temp = { F: wholeNumTemp };
+  // result.temp = { F: 60 };
   result.type = getWeatherType(result.temp.F);
-  // result.type = 99;
   result.condition = data.weather[0].main.toLowerCase();
   result.isDay = isDay(data.sys, Date.now());
   return result;
