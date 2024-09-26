@@ -10,19 +10,25 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
   });
 };
 
+// this function is called 'parseWeatherData' in the videos
+// and the function looks like this
+// export const parseWeatherData = (data) => {
+//   const main = data.main;
+//   const temperature = main && main.temp;
+//   return Math.ceil(temperature);
+// };
 export const filterWeatherData = (data) => {
-  //   console.log(data);
-  //   console.log(data.main.temp);
-
-  let wholeNumTemp;
   const result = {};
   result.city = data.name;
-  wholeNumTemp = Math.trunc(data.main.temp);
-  result.temp = { F: wholeNumTemp };
-  // result.temp = { F: 60 };
+  let wholeNumTemp = Math.trunc(data.main.temp);
+  result.temp = {
+    F: wholeNumTemp,
+    C: Math.trunc((wholeNumTemp - 32) * (5 / 9)),
+  };
   result.type = getWeatherType(result.temp.F);
   result.condition = data.weather[0].main.toLowerCase();
   result.isDay = isDay(data.sys, Date.now());
+  console.log(result);
   return result;
 };
 
@@ -39,3 +45,6 @@ const getWeatherType = (temperature) => {
     return "cold";
   }
 };
+
+// weather.temperature.F = `${Math.round(data.main.temp)}&deg;F`;
+// weather.temperature.C = `${Math.round((data.main.temp-32)* 5/9)}&deg;C`

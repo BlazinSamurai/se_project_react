@@ -45,11 +45,21 @@ function App() {
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
+        console.log(data);
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
       .catch(console.error);
   }, []);
+
+  // the useEffect in the videos
+  // useEffect(() => {
+  //   getForecastWeather().then((data) => {
+  //     const temperature = parseWeatherData(data);
+  //     console.log(temperature);
+  //     setTemp(temperature);
+  //   });
+  // }, []);
 
   const handleToggleSwitchChange = () => {
     if (currentTempUnit === "C") {
@@ -59,7 +69,6 @@ function App() {
     }
   };
 
-  console.log(currentTempUnit);
   return (
     <div className="page">
       <CurrentTempUnitContext.Provider
