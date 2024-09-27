@@ -6,17 +6,17 @@
 
 .switch__box {
   border-radius: 25px;
-  border: 2px solid black;
-  width: 50px;
-  height: 30px;
-  /* outline: none; */
+  border: 2px solid rgba(126, 126, 126, 1);
+  width: 56px;
+  height: 28px;
   appearance: none;
+  margin-right: 20px;
 }
 
 .switch__slider {
   border-radius: 20px;
   width: 30px;
-  height: 30px;
+  height: 28px;
   background-color: black;
   color: white;
   text-align: center;
@@ -25,21 +25,21 @@
 }
 
 .switch__slider-F {
-  left: 18px;
+  left: 25px;
 }
 
 .switch__temp-F {
   position: absolute;
-  top: -9px;
-  left: 31px;
-  color: white;
+  top: -10px;
+  left: 38px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .switch__temp-C {
   position: absolute;
-  top: -9px;
-  left: 9px;
-  color: white;
+  top: -10px;
+  left: 10px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .switch__active {

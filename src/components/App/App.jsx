@@ -24,8 +24,8 @@ function App() {
     name: "",
     weather: "",
   });
-  const [temp, setTemp] = useState(0);
-  const [currentTempUnit, setTempToggle] = useState("C");
+
+  const [currentTempUnit, setTempToggle] = useState("F");
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
