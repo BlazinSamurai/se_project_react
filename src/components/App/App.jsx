@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTempUnitContext } from "../Context/CurrentTempUnitContext";
+import { getItems } from "../../utils/api";
 
 import "./App.css";
 
@@ -27,15 +28,15 @@ function App() {
     name: "",
     weather: "",
   });
-
   const [currentTempUnit, setTempToggle] = useState("F");
-
-  const handleAddClick = () => {
-    setActiveModal("add-garment");
-  };
+  const [clothingItems, setClothingItems] = useState([]);
 
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const handleAddClick = () => {
+    setActiveModal("add-garment");
   };
 
   const handleCardClick = (card) => {
@@ -46,6 +47,14 @@ function App() {
   const handleProfileClick = () => {
     setActiveModal("profile");
     console.log("Profile Clicked!");
+  };
+
+  const handleToggleSwitchChange = () => {
+    if (currentTempUnit === "C") {
+      setTempToggle("F");
+    } else {
+      setTempToggle("C");
+    }
   };
 
   // pass a empty array the function will only get used once
@@ -59,13 +68,15 @@ function App() {
       .catch(console.error);
   }, []);
 
-  const handleToggleSwitchChange = () => {
-    if (currentTempUnit === "C") {
-      setTempToggle("F");
-    } else {
-      setTempToggle("C");
-    }
-  };
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
+        // need to call the 'setClothingItems' here and
+        // set the clothing items
+      })
+      .catch(console.error);
+  }, []);
 
   return (
     <div className="page">
@@ -88,6 +99,7 @@ function App() {
               element={
                 // the name on the left of the operator('=') is what
                 // you're passing
+                // TODO - pass clothingItems as a prop
                 <Main weatherData={weatherData} onCardClick={handleCardClick} />
               }
             />
