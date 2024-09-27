@@ -10,13 +10,6 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
   });
 };
 
-// this function is called 'parseWeatherData' in the videos
-// and the function looks like this
-// export const parseWeatherData = (data) => {
-//   const main = data.main;
-//   const temperature = main && main.temp;
-//   return Math.ceil(temperature);
-// };
 export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
@@ -44,6 +37,3 @@ const getWeatherType = (temperature) => {
     return "cold";
   }
 };
-
-// weather.temperature.F = `${Math.round(data.main.temp)}&deg;F`;
-// weather.temperature.C = `${Math.round((data.main.temp-32)* 5/9)}&deg;C`

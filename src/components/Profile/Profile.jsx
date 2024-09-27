@@ -3,7 +3,7 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-function Profile({ onCardClick }) {
+function Profile({ onCardClick, clothingItems }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
@@ -12,7 +12,10 @@ function Profile({ onCardClick }) {
       <section className="profile__clothing-items">
         {/* for smaller components DO NOT rename the
             prop. Youll just cause more confusion */}
-        <ClothesSection onCardClick={onCardClick} />
+        <ClothesSection
+          onCardClick={onCardClick}
+          clothingItems={clothingItems}
+        />
       </section>
     </div>
   );

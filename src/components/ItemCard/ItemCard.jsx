@@ -20,7 +20,7 @@ function ItemCard({ item, onCardClick }) {
           // an reliability issues and is replaced with the function above
         }
         className="card__image"
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
       />
     </li>

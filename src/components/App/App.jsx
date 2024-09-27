@@ -71,9 +71,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
-        // need to call the 'setClothingItems' here and
-        // set the clothing items
+        setClothingItems([...data]);
       })
       .catch(console.error);
   }, []);
@@ -99,13 +97,21 @@ function App() {
               element={
                 // the name on the left of the operator('=') is what
                 // you're passing
-                // TODO - pass clothingItems as a prop
-                <Main weatherData={weatherData} onCardClick={handleCardClick} />
+                <Main
+                  weatherData={weatherData}
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
               }
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
             />
           </Routes>
 
@@ -114,7 +120,6 @@ function App() {
         where this is then you can always search it.
         <ItemToFind, ex <ItemCard and itll show you what component 
         it is apart of  */}
-          {/* <Main weatherData={weatherData} handleCardClick={handleCardClick} /> */}
           <Footer />
         </div>
         <ModalWithForm
