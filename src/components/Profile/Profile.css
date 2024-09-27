@@ -1,0 +1,10 @@
+.profile {
+  display: flex;
+}
+
+.profile__sidebar {
+}
+
+.profile__text {
+  color: black;
+}

@@ -7,11 +7,8 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
     <ModalWithForm
       title="New garment"
       buttonText="Add garment"
-      // isOpen={activeModal} old
-      //   onClose={closeActiveModal} old old
-      isOpen={activeModal === "add-garment"} //old old
+      isOpen={activeModal === "add-garment"}
       onClose={closeActiveModal}
-      //   isOpen={isOpen}
       onSubmit={onAddItem}
     >
       {/* htmlFor and id should match */}

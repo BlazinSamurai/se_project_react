@@ -4,7 +4,7 @@ import logo from "../../images/Logo.svg";
 import avatar from "../../images/Ellipse 18.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, handleProfileClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -29,7 +29,14 @@ function Header({ handleAddClick, weatherData }) {
       </button>
 
       <div className="header__user-container">
-        <p className="header__username">Terrence Tegegne</p>
+        {/* <p className="header__username">Terrence Tegegne</p> */}
+        <button
+          onClick={handleProfileClick}
+          type="button"
+          className="header__username"
+        >
+          Terrence Tegegne
+        </button>
         <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
       </div>
     </header>

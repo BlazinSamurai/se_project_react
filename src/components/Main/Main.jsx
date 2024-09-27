@@ -6,15 +6,13 @@ import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants";
 import { CurrentTempUnitContext } from "../Context/CurrentTempUnitContext";
 
-function Main({ weatherData, handleCardClick }) {
+function Main({ weatherData, onCardClick }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
-  console.log(currentTempUnit);
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="cards__text">
-          {/* Today is {weatherData.temp.F} &deg; F / You may want to wear: */}
           Today is{" "}
           {currentTempUnit === "F" ? weatherData.temp.F : weatherData.temp.C}
           &deg;
@@ -26,12 +24,11 @@ function Main({ weatherData, handleCardClick }) {
               return item.weather === weatherData.type;
             })
             .map((item) => {
-              // you can name the prop anything you want. I.e "item"
               return (
                 <ItemCard
                   key={item._id}
                   item={item}
-                  onCardClick={handleCardClick}
+                  onCardClick={onCardClick}
                 />
               );
             })}

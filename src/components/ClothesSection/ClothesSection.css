@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url(/src/vendor/cabinet-grotesk/CabinetGrotesk-Bold.otf);
+}
+
+.clothes-section {
+}
+
+.clothes-section__item-btn-group {
+  display: flex;
+  column-gap: 20px;
+}
+
+.clothes-section__items-text {
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+}
+
+.clothes-section__btn {
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  color: rgba(0, 0, 0, 0.6);
+  border: none;
+  cursor: pointer;
+}
+
+.clothes-section__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 21px;
+}

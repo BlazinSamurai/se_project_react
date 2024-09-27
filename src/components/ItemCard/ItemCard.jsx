@@ -15,10 +15,9 @@ function ItemCard({ item, onCardClick }) {
         // before the ()=>{} is was onCardClick which doesn't work
         onClick={
           handleCardClick
-          // () => {
+          // () => {onCardClick(item);}
           // this is generally not a good idea for performance reasons
           // an reliability issues and is replaced with the function above
-          // onCardClick(item);}
         }
         className="card__image"
         src={item.link}
