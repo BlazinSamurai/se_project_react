@@ -3,9 +3,6 @@
   src: url(/src/vendor/cabinet-grotesk/CabinetGrotesk-Bold.otf);
 }
 
-.clothes-section {
-}
-
 .clothes-section__item-btn-group {
   display: flex;
   column-gap: 20px;
