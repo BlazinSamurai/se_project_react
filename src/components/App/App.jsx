@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
-import { CurrentTempUnitContext } from "../Context/CurrentTempUnitContext";
+import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
 import { getItems } from "../../utils/api";
 
 import "./App.css";
@@ -46,7 +46,6 @@ function App() {
 
   const handleProfileClick = () => {
     setActiveModal("profile");
-    console.log("Profile Clicked!");
   };
 
   const handleToggleSwitchChange = () => {

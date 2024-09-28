@@ -2,14 +2,14 @@ import React from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
+// ModalWithForm({ children, buttonText, title, isOpen, onClose })
 const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
   return (
     <ModalWithForm
-      title="New garment"
       buttonText="Add garment"
+      title="New garment"
       isOpen={activeModal === "add-garment"}
       onClose={closeActiveModal}
-      onSubmit={onAddItem}
     >
       {/* htmlFor and id should match */}
       <label htmlFor="name" className="modal__label modal__label_span">
