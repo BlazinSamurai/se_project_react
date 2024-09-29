@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-// ModalWithForm({ children, buttonText, title, isOpen, onClose })
 const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
+  const [name, setName] = useState("");
+  const handleNameChange = (e) => {
+    console.log(e.target.value);
+    setName(e.target.value);
+  };
+
+  const [link, setUrl] = useState("");
+  const handleUrlChange = (e) => {
+    console.log(e.target.value);
+    setUrl(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddItem({ name, link });
+  };
+
   return (
     <ModalWithForm
       buttonText="Add garment"
       title="New garment"
-      isOpen={activeModal === "add-garment"}
+      isOpen={isOpen}
       onClose={closeActiveModal}
+      onSubmit={handleSubmit}
     >
       {/* htmlFor and id should match */}
       <label htmlFor="name" className="modal__label modal__label_span">
@@ -17,8 +34,12 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
         <input
           type="text"
           className="modal__input"
+          minLength="1"
+          maxLength="30"
           id="name"
           placeholder="Name"
+          value={name}
+          onChange={handleNameChange}
         />
         <span className="modal__span-divider"></span>
       </label>
@@ -27,8 +48,12 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
         <input
           type="text"
           className="modal__input"
+          minLength="1"
+          maxLength="30"
           id="imageUrl"
           placeholder="Image URL"
+          value={link}
+          onChange={handleUrlChange}
         />
         <span className="modal__span-divider"></span>
       </label>
