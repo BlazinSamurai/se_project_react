@@ -11,7 +11,6 @@ import "./App.css";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
@@ -57,8 +56,8 @@ function App() {
     }
   };
 
-  const onAddItem = (values, links) => {
-    // console.log(e);
+  const onAddItem = (name, links, weather) => {
+    console.log(`Name: ${name}, Link: ${links}, Weather type: ${weather}.`);
   };
 
   // pass a empty array the function will only get used once
@@ -114,6 +113,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onAddNewClick={handleAddClick}
                 />
               }
             />
