@@ -15,6 +15,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -37,6 +38,10 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
+  };
+
+  const handleDeleteClick = () => {
+    setActiveModal("delete");
   };
 
   const handleCardClick = (card) => {
@@ -134,9 +139,19 @@ function App() {
         />
 
         <ItemModal
-          activeModal={activeModal}
           card={selectedCard}
+          activeModal={activeModal}
           onClose={closeActiveModal}
+          onCancel={handleCardClick}
+          onDeleteClick={handleDeleteClick}
+        />
+
+        <DeleteModal
+          card={selectedCard}
+          activeModal={activeModal}
+          onClose={closeActiveModal}
+          onCancel={handleCardClick}
+          onDeleteClick={handleDeleteClick}
         />
       </CurrentTempUnitContext.Provider>
     </div>

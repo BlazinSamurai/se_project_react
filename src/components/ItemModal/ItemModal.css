@@ -13,6 +13,7 @@
   top: 24px;
   right: 24px;
   z-index: 1;
+  cursor: pointer;
 }
 
 .modal__image {
@@ -21,16 +22,13 @@
   border-radius: 20px 20px 0 0;
 }
 
-.modal__caption {
-  /* NameUI text style 1 */
-  font-family: Cabinet Grotesk;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  margin: 0;
-  padding: 20px 0 12px 32px;
+.modal__footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 32px 32px;
 }
 
+.modal__caption,
 .modal__weather {
   /* NameUI text style 1 */
   font-family: Cabinet Grotesk;
@@ -38,5 +36,19 @@
   font-size: 20px;
   line-height: 24px;
   margin: 0;
-  padding: 0 0 32px 32px;
+}
+
+.modal__delete-text {
+  /* styleName: UI text style 1; */
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: rgba(255, 77, 0, 1);
+  background: none;
+  border: none;
+  width: 101px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
 }

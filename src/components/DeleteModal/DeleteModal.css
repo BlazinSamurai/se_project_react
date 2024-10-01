@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url(/src/vendor/cabinet-grotesk/CabinetGrotesk-Bold.otf);
+}
+
+.modal__text-delete {
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  color: rgba(0, 0, 0, 1);
+  width: 367px;
+  height: 48px;
+  margin: 0;
+}
+
+.modal__content-delete {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__delete-btn {
+  /* styleName: UI text style 1; */
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: rgba(255, 77, 0, 1);
+  border: none;
+  background: none;
+  padding-top: 40px;
+  cursor: pointer;
+}
+
+.modal__cancel-btn {
+  /* styleName: UI text style 1; */
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 1);
+  border: none;
+  background: none;
+  padding-top: 24px;
+  cursor: pointer;
+}
