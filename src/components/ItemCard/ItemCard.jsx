@@ -1,6 +1,7 @@
 import "./ItemCard.css";
 
 //destructored here so we don't have to use props.item
+//item is the "cards", and onCardClick is the handleCardClick function
 function ItemCard({ item, onCardClick }) {
   const handleCardClick = () => {
     onCardClick(item);

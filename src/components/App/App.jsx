@@ -142,16 +142,14 @@ function App() {
           card={selectedCard}
           activeModal={activeModal}
           onClose={closeActiveModal}
-          onCancel={handleCardClick}
           onDeleteClick={handleDeleteClick}
         />
 
         <DeleteModal
-          card={selectedCard}
           activeModal={activeModal}
           onClose={closeActiveModal}
           onCancel={handleCardClick}
-          onDeleteClick={handleDeleteClick}
+          card={selectedCard}
         />
       </CurrentTempUnitContext.Provider>
     </div>

@@ -7,13 +7,21 @@ function getItems() {
 }
 
 // function postItems() {
-//   return fetch(`${baseUrl}items`).then((res) => {
+//   return fetch(`${baseUrl}items`, {
+//    method: 'POST',
+//    body: JSON.stringify(jsonData)
+//   })
+//   .then((res) => {
 //     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 //   });
 // }
 
 // function deleteItems() {
-//   return fetch(`${baseUrl}items`).then((res) => {
+//   return fetch(`${baseUrl}items`, {
+//    method: 'DELETE',
+//    body: JSON.stringify(jsonData)
+//   })
+//   .then((res) => {
 //     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 //   });
 // }

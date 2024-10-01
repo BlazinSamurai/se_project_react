@@ -3,17 +3,20 @@ import "./DeleteModal.css";
 import ItemCard from "../ItemCard/ItemCard";
 import ItemModal from "../ItemModal/ItemModal";
 
-function DeleteModal({ card, activeModal, onClose, onCancel, onDeleteClick }) {
-  // console.log(
-  //   "Card info in",
-  //   activeModal,
-  //   ": ",
-  //   card.name,
-  //   ", ",
-  //   card.weather,
-  //   ", ",
-  //   card.imageUrl
-  // );
+function DeleteModal({ activeModal, onClose, onCancel, card }) {
+  const handleCancelClick = () => {
+    onCancel(card);
+  };
+  console.log(
+    "Card info in",
+    activeModal,
+    ": ",
+    card.name,
+    ", ",
+    card.weather,
+    ", ",
+    card.imageUrl
+  );
   const cssRules = {
     maxWidth: 670,
     height: 290,
@@ -40,20 +43,12 @@ function DeleteModal({ card, activeModal, onClose, onCancel, onDeleteClick }) {
             Yes, delete item
           </button>
           <button
-            onClick={onCancel}
+            onClick={handleCancelClick}
             type="button"
             className="modal__cancel-btn"
           >
             Cancel
           </button>
-          <ItemCard item={card} onCardClick={onCancel} />
-          <ItemModal
-            card={card}
-            activeModal={activeModal}
-            onClose={onClose}
-            onCancel={onCancel}
-            onDeleteClick={onDeleteClick}
-          />
         </div>
       </div>
     </div>
