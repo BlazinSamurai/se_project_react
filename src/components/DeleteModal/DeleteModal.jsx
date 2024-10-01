@@ -1,19 +1,19 @@
 import "./DeleteModal.css";
 
-import ItemModal from "../ItemModal/ItemModal";
 import ItemCard from "../ItemCard/ItemCard";
+import ItemModal from "../ItemModal/ItemModal";
 
 function DeleteModal({ card, activeModal, onClose, onCancel, onDeleteClick }) {
-  console.log(
-    "Card info in",
-    activeModal,
-    ": ",
-    card.name,
-    ", ",
-    card.weather,
-    ", ",
-    card.imageUrl
-  );
+  // console.log(
+  //   "Card info in",
+  //   activeModal,
+  //   ": ",
+  //   card.name,
+  //   ", ",
+  //   card.weather,
+  //   ", ",
+  //   card.imageUrl
+  // );
   const cssRules = {
     maxWidth: 670,
     height: 290,

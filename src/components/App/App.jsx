@@ -61,8 +61,8 @@ function App() {
     }
   };
 
-  const onAddItem = (name, links, weather) => {
-    console.log(`Name: ${name}, Link: ${links}, Weather type: ${weather}.`);
+  const onAddItem = (name, link, weather) => {
+    console.log(`Name: ${name}, Link: ${link}, Weather type: ${weather}.`);
   };
 
   // pass a empty array the function will only get used once

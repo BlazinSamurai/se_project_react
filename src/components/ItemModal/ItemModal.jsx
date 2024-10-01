@@ -2,16 +2,16 @@ import "./ItemModal.css";
 import defaultImage from "../../images/default_clothing.png";
 
 function ItemModal({ card, activeModal, onClose, onCancel, onDeleteClick }) {
-  console.log(
-    "Card info in",
-    activeModal,
-    ": ",
-    card.name,
-    ", ",
-    card.weather,
-    ", ",
-    card.imageUrl
-  );
+  // console.log(
+  //   "Card info in",
+  //   activeModal,
+  //   ": ",
+  //   card.name,
+  //   ", ",
+  //   card.weather,
+  //   ", ",
+  //   card.imageUrl
+  // );
   const cssRules = {
     width: 498,
     height: 610,
