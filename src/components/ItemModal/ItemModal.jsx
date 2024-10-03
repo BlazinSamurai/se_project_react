@@ -2,16 +2,6 @@ import "./ItemModal.css";
 import defaultImage from "../../images/default_clothing.png";
 
 function ItemModal({ card, activeModal, onClose, onDeleteClick }) {
-  console.log(
-    "Card info in",
-    activeModal,
-    ": ",
-    card.name,
-    ", ",
-    card.weather,
-    ", ",
-    card.imageUrl
-  );
   const cssRules = {
     width: 498,
     height: 610,
@@ -31,13 +21,11 @@ function ItemModal({ card, activeModal, onClose, onDeleteClick }) {
           type="button"
           className="modal__close modal__close-item"
         ></button>
-        {/* {card.imageUrl && ( */}
         <img
           src={card.imageUrl || defaultImage}
           alt={card.name}
           className="modal__image"
         />
-        {/* // )} */}
         <footer className="modal__footer">
           <div>
             <h2 className="modal__caption">{card.name}</h2>

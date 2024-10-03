@@ -5,12 +5,13 @@ import { Routes, Route } from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
-import { getItems } from "../../utils/api";
+import { getItems, postItems, deleteItems } from "../../utils/api";
 
 import "./App.css";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import ItemCard from "../ItemCard/ItemCard";
 import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
@@ -61,8 +62,17 @@ function App() {
     }
   };
 
-  const onAddItem = (name, link, weather) => {
-    console.log(`Name: ${name}, Link: ${link}, Weather type: ${weather}.`);
+  const handleAddItemSubmit = (name, link, weather) => {
+    postItems({ link, name, weather });
+    getItems()
+      .then((data) => {
+        setClothingItems([{ imageUrl: link, name, weather }, ...data]);
+      })
+      .catch(console.error);
+  };
+
+  const onDelete = (id) => {
+    deleteItems(id);
   };
 
   // pass a empty array the function will only get used once
@@ -123,18 +133,12 @@ function App() {
               }
             />
           </Routes>
-
-          {/* have to pass handleCardClick to the component that 
-        contains ItemCard which is main. If you cant remember
-        where this is then you can always search it.
-        <ItemToFind, ex <ItemCard and itll show you what component 
-        it is apart of  */}
           <Footer />
         </div>
 
         <AddItemModal
           closeActiveModal={closeActiveModal}
-          onAddItem={onAddItem}
+          onAddItem={handleAddItemSubmit}
           isOpen={activeModal}
         />
 
@@ -150,6 +154,7 @@ function App() {
           onClose={closeActiveModal}
           onCancel={handleCardClick}
           card={selectedCard}
+          onDelete={onDelete}
         />
       </CurrentTempUnitContext.Provider>
     </div>

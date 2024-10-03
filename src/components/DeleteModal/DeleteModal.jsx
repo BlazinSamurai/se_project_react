@@ -1,22 +1,14 @@
 import "./DeleteModal.css";
 
-import ItemCard from "../ItemCard/ItemCard";
-import ItemModal from "../ItemModal/ItemModal";
-
-function DeleteModal({ activeModal, onClose, onCancel, card }) {
+function DeleteModal({ activeModal, onClose, onCancel, card, onDelete }) {
   const handleCancelClick = () => {
     onCancel(card);
   };
-  console.log(
-    "Card info in",
-    activeModal,
-    ": ",
-    card.name,
-    ", ",
-    card.weather,
-    ", ",
-    card.imageUrl
-  );
+
+  const handleDeleteClick = () => {
+    onDelete(card._id);
+  };
+
   const cssRules = {
     maxWidth: 670,
     height: 290,
@@ -38,8 +30,11 @@ function DeleteModal({ activeModal, onClose, onCancel, card }) {
             Are you sure you want to delete this item? This action is
             irreversible.
           </p>
-          {/* TODO - add onClick functionality for delete btn*/}
-          <button type="button" className="modal__delete-btn">
+          <button
+            onClick={handleDeleteClick}
+            type="button"
+            className="modal__delete-btn"
+          >
             Yes, delete item
           </button>
           <button

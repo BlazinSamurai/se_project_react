@@ -101,6 +101,60 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw3c25d30f/tillys/images/catalog/1000x1000/484239110.jpg?sw=800&sh=1028&q=100",
+      "name": "Halloween Tee",
+      "weather": "Warm",
+      "_id": 17
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw5e21057e/tillys/images/catalog/1000x1000/460686501.jpg?sw=800&sh=1028&q=100",
+      "name": "Halloween Sweater",
+      "weather": "Cold",
+      "_id": 18
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dwf523f0c0/tillys/images/catalog/1000x1000/496013100.jpg?sw=800&sh=1028&q=100",
+      "name": "Blenders Sunglasses",
+      "weather": "Hot",
+      "_id": 19
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw211df8ed/tillys/images/catalog/1000x1000/496010150.jpg?sw=800&sh=1028&q=100",
+      "name": "Boujie Blenders SG",
+      "weather": "Hot",
+      "_id": 20
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dwe5fcfc5f/tillys/images/catalog/1000x1000/478942125.jpg?sw=800&sh=1028&q=100",
+      "name": "Vans Shoes",
+      "weather": "Warm",
+      "_id": 21
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw727c8efc/tillys/images/catalog/1000x1000/492706100.jpg?sw=800&sh=1028&q=100",
+      "name": "RSQ Terrain Rayon Camp Shirt",
+      "weather": "Warm",
+      "_id": 22
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw4ffc8128/tillys/images/catalog/1000x1000/492671200.jpg?sw=800&sh=1028&q=100",
+      "name": "RSQ Texture Blur Camp Shirt",
+      "weather": "Warm",
+      "_id": 23
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw0faa4823/tillys/images/catalog/1000x1000/459431435a.jpg?sw=800&sh=1028&q=100",
+      "name": "Novel Duffle Bag",
+      "weather": "Cold",
+      "_id": 24
+    },
+    {
+      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dwd6b51b04/tillys/images/catalog/1000x1000/466097426.jpg?sw=800&sh=1028&q=100",
+      "name": "Heavyweight Flannel",
+      "weather": "Cold",
+      "_id": 25
     }
   ]
 }

@@ -33,7 +33,6 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
       onSubmit={handleSubmit}
     >
       {/* htmlFor and id should match */}
-
       {/* TODO - ADD SOME VALIDATIONS */}
       <label htmlFor="name" className="modal__label modal__label_span">
         Name{" "}
@@ -52,10 +51,9 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
       <label htmlFor="imageUrl" className="modal__label modal__label_span">
         Image{" "}
         <input
-          type="text"
+          type="url"
           className="modal__input"
           minLength="1"
-          maxLength="30"
           id="imageUrl"
           placeholder="Image URL"
           value={link}
