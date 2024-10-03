@@ -7,6 +7,7 @@ function DeleteModal({ activeModal, onClose, onCancel, card, onDelete }) {
 
   const handleDeleteClick = () => {
     onDelete(card._id);
+    onClose();
   };
 
   const cssRules = {

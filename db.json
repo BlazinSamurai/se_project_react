@@ -103,18 +103,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw3c25d30f/tillys/images/catalog/1000x1000/484239110.jpg?sw=800&sh=1028&q=100",
-      "name": "Halloween Tee",
-      "weather": "Warm",
-      "_id": 17
-    },
-    {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw5e21057e/tillys/images/catalog/1000x1000/460686501.jpg?sw=800&sh=1028&q=100",
-      "name": "Halloween Sweater",
-      "weather": "Cold",
-      "_id": 18
-    },
-    {
       "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dwf523f0c0/tillys/images/catalog/1000x1000/496013100.jpg?sw=800&sh=1028&q=100",
       "name": "Blenders Sunglasses",
       "weather": "Hot",
@@ -155,6 +143,12 @@
       "name": "Heavyweight Flannel",
       "weather": "Cold",
       "_id": 25
+    },
+    {
+      "imageUrl": "https://www.ripplejunction.com/media/catalog/product/Preview/TA/TAAH2004_MILITARY_GREEN_BACK.jpg?width=700&height=700&store=default&image-type=image",
+      "name": "A.O.T Sweater",
+      "weather": "Cold",
+      "_id": 26
     }
   ]
 }

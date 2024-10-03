@@ -73,6 +73,11 @@ function App() {
 
   const onDelete = (id) => {
     deleteItems(id);
+    getItems()
+      .then((data) => {
+        setClothingItems([...data]);
+      })
+      .catch(console.error);
   };
 
   // pass a empty array the function will only get used once
