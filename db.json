@@ -103,52 +103,22 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dwf523f0c0/tillys/images/catalog/1000x1000/496013100.jpg?sw=800&sh=1028&q=100",
-      "name": "Blenders Sunglasses",
-      "weather": "Hot",
+      "name": "wet",
+      "weather": "hot",
+      "imageUrl": "https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-avenue-slingbag--M11702_PM2_Front%20view.png?wid=1090&hei=1090",
+      "_id": 17
+    },
+    {
+      "name": "Dark Wet",
+      "weather": "hot",
+      "imageUrl": "https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-avenue-slingbag-nm--M46327_PM2_Front%20view.png?wid=1090&hei=1090",
+      "_id": 18
+    },
+    {
+      "name": "Underwear",
+      "weather": "hot",
+      "imageUrl": "https://calvinklein.scene7.com/is/image/CalvinKlein/62023954_049_main?wid=864&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp",
       "_id": 19
-    },
-    {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw211df8ed/tillys/images/catalog/1000x1000/496010150.jpg?sw=800&sh=1028&q=100",
-      "name": "Boujie Blenders SG",
-      "weather": "Hot",
-      "_id": 20
-    },
-    {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dwe5fcfc5f/tillys/images/catalog/1000x1000/478942125.jpg?sw=800&sh=1028&q=100",
-      "name": "Vans Shoes",
-      "weather": "Warm",
-      "_id": 21
-    },
-    {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw727c8efc/tillys/images/catalog/1000x1000/492706100.jpg?sw=800&sh=1028&q=100",
-      "name": "RSQ Terrain Rayon Camp Shirt",
-      "weather": "Warm",
-      "_id": 22
-    },
-    {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw4ffc8128/tillys/images/catalog/1000x1000/492671200.jpg?sw=800&sh=1028&q=100",
-      "name": "RSQ Texture Blur Camp Shirt",
-      "weather": "Warm",
-      "_id": 23
-    },
-    {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw0faa4823/tillys/images/catalog/1000x1000/459431435a.jpg?sw=800&sh=1028&q=100",
-      "name": "Novel Duffle Bag",
-      "weather": "Cold",
-      "_id": 24
-    },
-    {
-      "imageUrl": "https://www.tillys.com/dw/image/v2/BFBK_PRD/on/demandware.static/-/Sites-master-catalog/default/dwd6b51b04/tillys/images/catalog/1000x1000/466097426.jpg?sw=800&sh=1028&q=100",
-      "name": "Heavyweight Flannel",
-      "weather": "Cold",
-      "_id": 25
-    },
-    {
-      "imageUrl": "https://www.ripplejunction.com/media/catalog/product/Preview/TA/TAAH2004_MILITARY_GREEN_BACK.jpg?width=700&height=700&store=default&image-type=image",
-      "name": "A.O.T Sweater",
-      "weather": "Cold",
-      "_id": 26
     }
   ]
 }

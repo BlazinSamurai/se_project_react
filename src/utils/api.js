@@ -10,9 +10,6 @@ function getItems() {
 // will be ignored. Only a value set in a POST request will be respected, but only if not already taken
 // A POST, PUT or PATCH request should include a Content-Type: application/json
 // header to use the JSON in the request body
-// Not sure if I set the header correctly?:
-// headers: "Content-Type: application/json",
-// Content-Type: application/json,
 function postItems(card) {
   return fetch(`${baseUrl}items`, {
     method: "POST",
@@ -20,13 +17,17 @@ function postItems(card) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      imageUrl: card.link,
       name: card.name,
       weather: card.weather,
+      imageUrl: card.link,
     }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  })
+    .then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    })
+    .then((result) => {
+      console.log("Post result:", result, " post result id?: ", result._id);
+    });
 }
 
 // DELETE http://localhost:3001/items/:id

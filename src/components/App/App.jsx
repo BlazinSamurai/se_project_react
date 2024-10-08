@@ -11,7 +11,6 @@ import "./App.css";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ItemCard from "../ItemCard/ItemCard";
 import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
@@ -62,11 +61,14 @@ function App() {
     }
   };
 
-  const handleAddItemSubmit = (name, link, weather) => {
-    postItems({ link, name, weather });
+  const handleAddItemSubmit = (name, weather, link) => {
+    // adds the item to the server
+    postItems({ name, weather, link });
+
     getItems()
       .then((data) => {
-        setClothingItems([{ imageUrl: link, name, weather }, ...data]);
+        // setClothingItems([{ name, weather, imageUrl: link }, ...data]);
+        setClothingItems([...data]);
       })
       .catch(console.error);
   };
