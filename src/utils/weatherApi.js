@@ -14,10 +14,11 @@ export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
   let wholeNumTemp = Math.trunc(data.main.temp);
-  result.temp = {
-    F: wholeNumTemp,
-    C: Math.trunc((wholeNumTemp - 32) * (5 / 9)),
-  };
+  // result.temp = {
+  //   F: wholeNumTemp,
+  //   C: Math.trunc((wholeNumTemp - 32) * (5 / 9)),
+  // };
+  result.temp = { F: 72 };
   result.type = getWeatherType(result.temp.F);
   result.condition = data.weather[0].main.toLowerCase();
   result.isDay = isDay(data.sys, Date.now());
@@ -31,7 +32,7 @@ const isDay = ({ sunrise, sunset }, now) => {
 const getWeatherType = (temperature) => {
   if (temperature > 75) {
     return "hot";
-  } else if (temperature > 70 && temperature < 75) {
+  } else if (temperature > 69 && temperature < 75) {
     return "warm";
   } else {
     return "cold";

@@ -76,3 +76,5 @@ export const coordinates = {
 };
 
 export const APIkey = "e0ff45fb03c54d35f7a8269023fff51a";
+
+export let temp = [];

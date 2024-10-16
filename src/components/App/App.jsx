@@ -3,9 +3,15 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { coordinates, APIkey } from "../../utils/constants";
+import { coordinates, APIkey, temp } from "../../utils/constants";
 import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
-import { getItems, postItems, deleteItems } from "../../utils/api";
+import {
+  getItems,
+  postItems,
+  patchItems,
+  putItems,
+  deleteItems,
+} from "../../utils/api";
 
 import "./App.css";
 
@@ -28,6 +34,7 @@ function App() {
     link: "",
     name: "",
     weather: "",
+    _id: "",
   });
   const [currentTempUnit, setTempToggle] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
@@ -62,23 +69,37 @@ function App() {
   };
 
   const handleAddItemSubmit = (name, weather, link) => {
-    // adds the item to the server
-    postItems({ name, weather, link });
+    let newItemID;
+
+    const postedResult = postItems({ name, weather, link });
+    // postedResult.then((result) => {
+    //   newItemID = result._id;
+    // });
+
+    // patchItems({ name, weather, link }, 17);
+    // putItems({ name, weather, link }, 17);
 
     getItems()
       .then((data) => {
-        // setClothingItems([{ name, weather, imageUrl: link }, ...data]);
+        console.log(data);
+        const lastElement = data.pop();
+        data.unshift(lastElement);
+
+        // let reverseArray = data.toReversed();
+        // console.log(reverseArray);
+        // setClothingItems([...reverseArray]);
         setClothingItems([...data]);
       })
       .catch(console.error);
   };
 
-  const onDelete = (id) => {
-    deleteItems(id);
-    getItems()
-      .then((data) => {
-        setClothingItems([...data]);
-      })
+  const handleDelete = (id) => {
+    deleteItems(id)
+      .then(
+        getItems().then((data) => {
+          setClothingItems([...data]);
+        })
+      )
       .catch(console.error);
   };
 
@@ -161,7 +182,7 @@ function App() {
           onClose={closeActiveModal}
           onCancel={handleCardClick}
           card={selectedCard}
-          onDelete={onDelete}
+          onDelete={handleDelete}
         />
       </CurrentTempUnitContext.Provider>
     </div>
