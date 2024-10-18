@@ -14,11 +14,11 @@ export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
   let wholeNumTemp = Math.trunc(data.main.temp);
-  // result.temp = {
-  //   F: wholeNumTemp,
-  //   C: Math.trunc((wholeNumTemp - 32) * (5 / 9)),
-  // };
-  result.temp = { F: 72 };
+  result.temp = {
+    F: wholeNumTemp,
+    C: Math.trunc((wholeNumTemp - 32) * (5 / 9)),
+  };
+  // result.temp = { F: 72 };
   result.type = getWeatherType(result.temp.F);
   result.condition = data.weather[0].main.toLowerCase();
   result.isDay = isDay(data.sys, Date.now());

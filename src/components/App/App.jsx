@@ -69,24 +69,14 @@ function App() {
   };
 
   const handleAddItemSubmit = (name, weather, link) => {
-    let newItemID;
-
-    const postedResult = postItems({ name, weather, link });
-    // postedResult.then((result) => {
-    //   newItemID = result._id;
-    // });
-
-    // patchItems({ name, weather, link }, 17);
-    // putItems({ name, weather, link }, 17);
-
-    getItems()
+    postItems({ name, weather, link })
+      .then(() => {
+        return getItems();
+      })
       .then((data) => {
-        console.log(data);
         const lastElement = data.pop();
         data.unshift(lastElement);
-
         // let reverseArray = data.toReversed();
-        // console.log(reverseArray);
         // setClothingItems([...reverseArray]);
         setClothingItems([...data]);
       })
@@ -95,11 +85,12 @@ function App() {
 
   const handleDelete = (id) => {
     deleteItems(id)
-      .then(
-        getItems().then((data) => {
-          setClothingItems([...data]);
-        })
-      )
+      .then(() => {
+        return getItems();
+      })
+      .then((data) => {
+        setClothingItems([...data]);
+      })
       .catch(console.error);
   };
 

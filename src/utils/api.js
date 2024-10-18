@@ -22,14 +22,9 @@ function postItems(card) {
       weather: card.weather,
       imageUrl: card.link,
     }),
-  })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-    })
-    .then((result) => {
-      // console.log("Post result:", result, " post result id?: ", result._id);
-      return result;
-    });
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
 }
 
 // PATCH http://localhost:3001/items/:id
@@ -46,14 +41,9 @@ function patchItems(card, id) {
       imageUrl: card.link,
       // _id: card.id,
     }),
-  })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-    })
-    .then((result) => {
-      console.log("Patch result:", result);
-      // return result;
-    });
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
 }
 
 // PUT http://localhost:3001/items/:id
@@ -70,14 +60,9 @@ function putItems(card, id) {
       imageUrl: card.link,
       // _id: card.id,
     }),
-  })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-    })
-    .then((result) => {
-      console.log("Put result:", result);
-      // return result;
-    });
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
 }
 
 // DELETE http://localhost:3001/items/:id
@@ -85,11 +70,9 @@ function putItems(card, id) {
 function deleteItems(id) {
   return fetch(`${baseUrl}items/${id}`, {
     method: "DELETE",
-  })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-    })
-    .then((results) => console.log(results));
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
 }
 
 export { getItems, postItems, patchItems, putItems, deleteItems };
