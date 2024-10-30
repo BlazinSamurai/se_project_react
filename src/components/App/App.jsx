@@ -70,15 +70,8 @@ function App() {
 
   const handleAddItemSubmit = (name, weather, link) => {
     postItems({ name, weather, link })
-      .then(() => {
-        return getItems();
-      })
-      .then((data) => {
-        const lastElement = data.pop();
-        data.unshift(lastElement);
-        // let reverseArray = data.toReversed();
-        // setClothingItems([...reverseArray]);
-        setClothingItems([...data]);
+      .then((item) => {
+        setClothingItems([item, ...clothingItems]);
       })
       .catch(console.error);
   };
@@ -86,10 +79,7 @@ function App() {
   const handleDelete = (id) => {
     deleteItems(id)
       .then(() => {
-        return getItems();
-      })
-      .then((data) => {
-        setClothingItems([...data]);
+        setClothingItems([...clothingItems]);
       })
       .catch(console.error);
   };
@@ -119,9 +109,6 @@ function App() {
         value={{ currentTempUnit, handleToggleSwitchChange }}
       >
         <div className="page_content">
-          {/* its common to rename handlers, setActiveModal in 
-        setActiveModal={setActiveModal} to handleAddClick so 
-        now its handleAddClick={handleAddClick} */}
           <Header
             handleAddClick={handleAddClick}
             handleProfileClick={handleProfileClick}
@@ -156,9 +143,9 @@ function App() {
         </div>
 
         <AddItemModal
-          closeActiveModal={closeActiveModal}
+          activeModal={activeModal}
           onAddItem={handleAddItemSubmit}
-          isOpen={activeModal}
+          closeActiveModal={closeActiveModal}
         />
 
         <ItemModal
