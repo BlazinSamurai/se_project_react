@@ -32,7 +32,9 @@ const AddItemModal = ({ activeModal, onAddItem, closeActiveModal }) => {
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
     >
-      {/* htmlFor and id should match */}
+      {/* htmlFor and id should match, 
+          the style below gets passed \
+          as the 'child' in ModalWithForm */}
       {/* TODO - ADD SOME VALIDATIONS */}
       <label htmlFor="name" className="modal__label modal__label_span">
         Name{" "}

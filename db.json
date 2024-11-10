@@ -101,12 +101,6 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
-    },
-    {
-      "name": "Jersey  99",
-      "weather": "cold",
-      "imageUrl": "https://fanatics.frgimages.com/los-angeles-rams/mens-nike-aaron-donald-black-los-angeles-rams-rflctv-limited-jersey_pi4567000_altimages_ff_4567767-313d58fbce16de831a02alt1_full.jpg?_hv=2&w=900",
-      "_id": 18
     }
   ]
 }

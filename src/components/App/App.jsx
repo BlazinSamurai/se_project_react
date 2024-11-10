@@ -79,7 +79,9 @@ function App() {
   const handleDelete = (id) => {
     deleteItems(id)
       .then(() => {
-        setClothingItems([...clothingItems]);
+        const newClothingItems = clothingItems.filter((item) => item._id != id);
+        setClothingItems([...newClothingItems]);
+        closeActiveModal();
       })
       .catch(console.error);
   };
@@ -95,13 +97,16 @@ function App() {
       .catch(console.error);
   }, []);
 
+  // we need to specify a dependency, a variable which
+  // will cause the hook to be executed whenever it is changed
+  // These variables can be props or the internal state variables of the current component
   useEffect(() => {
     getItems()
       .then((data) => {
         setClothingItems([...data]);
       })
       .catch(console.error);
-  }, []);
+  }, [setClothingItems]);
 
   return (
     <div className="page">

@@ -21,7 +21,7 @@ function DeleteModal({ activeModal, onClose, onCancel, card, onDelete }) {
     <div className={`modal ${activeModal === "delete" && "modal_opened"}`}>
       <div className="modal__content" style={cssRules}>
         <button
-          onClick={onClose}
+          onClick={handleCancelClick}
           type="button"
           className="modal__close modal__close-item"
         ></button>
