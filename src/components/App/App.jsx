@@ -106,7 +106,7 @@ function App() {
         setClothingItems([...data]);
       })
       .catch(console.error);
-  }, [setClothingItems]);
+  }, []);
 
   return (
     <div className="page">
