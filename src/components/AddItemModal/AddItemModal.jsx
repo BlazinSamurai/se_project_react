@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const AddItemModal = ({ activeModal, onAddItem, closeActiveModal }) => {
+const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
   const [name, setName] = useState("");
   const [link, setUrl] = useState("");
   const [weather, setWeather] = useState(null);
@@ -28,12 +28,12 @@ const AddItemModal = ({ activeModal, onAddItem, closeActiveModal }) => {
     <ModalWithForm
       buttonText="Add garment"
       title="New garment"
-      activeModal={activeModal}
+      isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
     >
       {/* htmlFor and id should match, 
-          the style below gets passed \
+          the style below gets passed in
           as the 'child' in ModalWithForm */}
       {/* TODO - ADD SOME VALIDATIONS */}
       <label htmlFor="name" className="modal__label modal__label_span">
