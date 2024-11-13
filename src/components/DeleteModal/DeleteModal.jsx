@@ -1,6 +1,6 @@
 import "./DeleteModal.css";
 
-function DeleteModal({ activeModal, onClose, onCancel, card, onDelete }) {
+function DeleteModal({ activeModal, onCancel, card, onDelete }) {
   const handleCancelClick = () => {
     onCancel(card);
   };

@@ -163,7 +163,6 @@ function App() {
 
         <DeleteModal
           activeModal={activeModal}
-          onClose={closeActiveModal}
           onCancel={handleCardClick}
           card={selectedCard}
           onDelete={handleDelete}
