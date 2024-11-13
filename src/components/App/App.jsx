@@ -72,6 +72,7 @@ function App() {
     postItems({ name, weather, link })
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
+        closeActiveModal();
       })
       .catch(console.error);
   };
