@@ -22,6 +22,7 @@ import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -71,7 +72,7 @@ function App() {
   const handleAddItemSubmit = (name, weather, link) => {
     postItems({ name, weather, link })
       .then((item) => {
-        setClothingItems([item, ...clothingItems]);
+        setClothingItems([item.data, ...clothingItems]);
         closeActiveModal();
       })
       .catch(console.error);
@@ -167,6 +168,8 @@ function App() {
           card={selectedCard}
           onDelete={handleDelete}
         />
+
+        <RegisterModal activeModal={activeModal} onClose={closeActiveModal} />
       </CurrentTempUnitContext.Provider>
     </div>
   );
