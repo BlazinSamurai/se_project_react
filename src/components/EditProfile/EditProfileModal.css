@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url(/src/vendor/cabinet-grotesk/CabinetGrotesk-Bold.otf);
+}
+
+.modal__content-edit-profile {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.modal__title-edit-profile {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}

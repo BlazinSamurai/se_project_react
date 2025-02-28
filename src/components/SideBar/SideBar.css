@@ -5,19 +5,51 @@
 
 .sidebar {
   display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.sidebar__display-info {
+  display: flex;
   gap: 16px;
 }
 
-.sidebar__avatar {
+.sidebar__display-info_avatar {
   width: 56px;
   height: 56px;
 }
 
-.sidebar__username {
+.sidebar__display-info_username {
   font-family: Cabinet Grotesk;
   font-size: 20px;
   font-weight: 700;
   line-height: 24.8px;
   width: 157px;
   height: 25px;
+}
+
+.sidebar__change-profile-data {
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  width: 171px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+}
+
+.sidebar__logout {
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  width: 65px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
 }

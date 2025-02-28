@@ -23,6 +23,7 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import EditProfileModal from "../EditProfile/EditProfileModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -61,6 +62,10 @@ function App() {
     setActiveModal("profile");
   };
 
+  const handleEditProfile = () => {
+    setActiveModal("editProfile");
+  };
+
   const handleToggleSwitchChange = () => {
     if (currentTempUnit === "C") {
       setTempToggle("F");
@@ -87,6 +92,8 @@ function App() {
       })
       .catch(console.error);
   };
+
+  // Going to have to create a edit profile submit function???
 
   // pass a empty array the function will only get used once
   // when it first loads
@@ -142,6 +149,7 @@ function App() {
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   onAddNewClick={handleAddClick}
+                  editProfile={handleEditProfile}
                 />
               }
             />
@@ -170,6 +178,10 @@ function App() {
         />
 
         <RegisterModal activeModal={activeModal} onClose={closeActiveModal} />
+        <EditProfileModal
+          activeModal={activeModal}
+          onClose={closeActiveModal}
+        />
       </CurrentTempUnitContext.Provider>
     </div>
   );
