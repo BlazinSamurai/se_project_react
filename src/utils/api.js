@@ -22,6 +22,7 @@ function getItems() {
 // header to use the JSON in the request body
 //POST creates a resource
 function postItems(card) {
+  // when we remove the 's' from items you get a "Router not found" error
   return request(`${baseUrl}items`, {
     method: "POST",
     headers: {
@@ -78,11 +79,62 @@ function deleteItems(id) {
 }
 
 // GET   /profile
-// function getProfile() {
-//   return request(`${baseUrl}profile`);
-// }
+function getProfile() {
+  return request(`${baseUrl}profile`);
+}
 
-// PUT   /profile
 // PATCH /profile
+function patchProfile(info) {
+  return request(`${baseUrl}profile/change-profile-data`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: info.name,
+      avatar: info.avatar,
+    }),
+  });
+}
 
-export { getItems, postItems, patchItems, putItems, deleteItems, getProfile };
+// /signup for user registration
+function signUp(info) {
+  return request(`${baseUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: info.name,
+      avatar: info.avatar,
+      email: info.email,
+      password: info.password,
+    }),
+  });
+}
+
+// /signin for user authorization
+function signIn(info) {
+  return request(`${baseUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: info.email,
+      password: info.password,
+    }),
+  });
+}
+
+export {
+  getItems,
+  postItems,
+  patchItems,
+  putItems,
+  deleteItems,
+  getProfile,
+  patchProfile,
+  signUp,
+  signIn,
+};

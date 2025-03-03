@@ -11,7 +11,13 @@ import {
   patchItems,
   putItems,
   deleteItems,
+  getProfile,
+  patchProfile,
+  signUp,
+  signIn,
 } from "../../utils/api";
+
+import { setToken, getToken } from "../../utils/token";
 
 import "./App.css";
 
@@ -93,7 +99,51 @@ function App() {
       .catch(console.error);
   };
 
+  const handleLogin = ({ username, password }) => {
+    if (!username || !password) {
+      return;
+    }
+
+    auth
+      .authorize(username, password)
+      .then((data) => {
+        if (data.jwt) {
+          // Save the token to local storage
+          setToken(data.jwt);
+          // setUserData(data.user);
+          setIsLoggedIn(true);
+          // navigate("/ducks");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleRegistrationSubmit = (email, password, name, avatarULR) => {
+    signUp({ email, password, name, avatar })
+      .then((info) => {
+        console.log("user registered?");
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
   // Going to have to create a edit profile submit function???
+  const handlePatchProfile = (name, avatar) => {
+    patchProfile({ name, avatar })
+      .then((result) => {
+        console.log(result);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  // const handleGetProfile = (name, avatar) => {
+  //   getProfile()
+  //     .then(() => {
+  //       console.log(name + avatar);
+  //     })
+  //     .catch(console.error);
+  // };
 
   // pass a empty array the function will only get used once
   // when it first loads
@@ -177,10 +227,14 @@ function App() {
           onDelete={handleDelete}
         />
 
-        <RegisterModal activeModal={activeModal} onClose={closeActiveModal} />
+        <RegisterModal
+          isOpen={activeModal === "register"}
+          closeActiveModal={closeActiveModal}
+        />
         <EditProfileModal
           activeModal={activeModal}
           onClose={closeActiveModal}
+          handlePatchProfile={handlePatchProfile}
         />
       </CurrentTempUnitContext.Provider>
     </div>

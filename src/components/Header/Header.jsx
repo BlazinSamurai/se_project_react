@@ -32,7 +32,6 @@ function Header({ handleAddClick, handleProfileClick, weatherData }) {
       </button>
       <Link to={"/profile"} className="header__link">
         <div className="header__user-container">
-          {/* <p className="header__username">Terrence Tegegne</p> */}
           <button
             onClick={handleProfileClick}
             type="button"

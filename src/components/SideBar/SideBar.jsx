@@ -12,6 +12,7 @@ function SideBar({ editProfile }) {
         />
         <p className="sidebar__display-info_username"> Terrence Tegegne</p>
       </div>
+      {/* <Link to={"/profile/change-profile-data"}> dont need to add a new route */}
       <button
         onClick={editProfile}
         type="button"

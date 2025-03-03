@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./EditProfileModal.css";
 
-function EditProfileModal({ activeModal, onClose }) {
+function EditProfileModal({ activeModal, onClose, handlePatchProfile }) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
 
@@ -12,6 +12,11 @@ function EditProfileModal({ activeModal, onClose }) {
 
   const handleAvatarChange = (e) => {
     setAvatar(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handlePatchProfile(name, avatar);
   };
 
   const cssRules = {
@@ -62,7 +67,7 @@ function EditProfileModal({ activeModal, onClose }) {
             <span className="modal__span-divider"></span>
           </label>
           <button
-            // onClick={handleDeleteClick}
+            onClick={handleSubmit}
             type="button"
             className="modal__btn-edit-profile"
           >

@@ -2,23 +2,15 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ isOpen, closeActiveModal }) => {
+const LogInModal = ({ isOpen, closeActiveModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-  };
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-  const handleAvatarChange = (e) => {
-    setAvatar(e.target.value);
   };
 
   return (
@@ -57,36 +49,8 @@ const RegisterModal = ({ isOpen, closeActiveModal }) => {
         />
         <span className="modal__span-divider"></span>
       </label>
-      <label htmlFor="name" className="modal__label modal__label_span">
-        Name*{" "}
-        <input
-          type="text"
-          className="modal__input"
-          minLength="1"
-          maxLength="30"
-          id="name"
-          placeholder="Name"
-          value={name}
-          onChange={handleNameChange}
-        />
-        <span className="modal__span-divider"></span>
-      </label>
-      <label htmlFor="avatarURL" className="modal__label modal__label_span">
-        Avatar URL*{" "}
-        <input
-          type="url"
-          className="modal__input"
-          minLength="1"
-          maxLength="30"
-          id="avatarURL"
-          placeholder="Avatar URL"
-          value={avatar}
-          onChange={handleAvatarChange}
-        />
-        <span className="modal__span-divider"></span>
-      </label>
     </ModalWithForm>
   );
 };
 
-export default RegisterModal;
+export default LogInModal;
