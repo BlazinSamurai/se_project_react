@@ -17,10 +17,6 @@ function EditProfileModal({ activeModal, onClose }) {
   const cssRules = {
     maxWidth: 496,
     height: 304,
-    // paddingTop: 60,
-    // paddingRight: 152,
-    // paddingBottom: 60,
-    // paddingLeft: 151,
   };
   return (
     <div className={`modal ${activeModal === "editProfile" && "modal_opened"}`}>
@@ -32,8 +28,11 @@ function EditProfileModal({ activeModal, onClose }) {
         ></button>
         <div className="modal__content-edit-profile">
           <h1 className="modal__title-edit-profile"> Change profile data </h1>
-          <label htmlFor="name" className="modal__label modal__label_span">
-            Name{" "}
+          <label
+            htmlFor="name"
+            className="modal__label modal__label_span modal__label_padding-remover"
+          >
+            Name *{" "}
             <input
               type="text"
               className="modal__input"
@@ -46,8 +45,11 @@ function EditProfileModal({ activeModal, onClose }) {
             />
             <span className="modal__span-divider"></span>
           </label>
-          <label htmlFor="imageUrl" className="modal__label modal__label_span">
-            Image{" "}
+          <label
+            htmlFor="imageUrl"
+            className="modal__label modal__label_span modal__label_padding-remover"
+          >
+            Avatar *{" "}
             <input
               type="url"
               className="modal__input"
@@ -62,7 +64,7 @@ function EditProfileModal({ activeModal, onClose }) {
           <button
             // onClick={handleDeleteClick}
             type="button"
-            // className="modal__delete-btn"
+            className="modal__btn-edit-profile"
           >
             Save Changes
           </button>

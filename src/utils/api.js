@@ -77,4 +77,12 @@ function deleteItems(id) {
   });
 }
 
-export { getItems, postItems, patchItems, putItems, deleteItems };
+// GET   /profile
+// function getProfile() {
+//   return request(`${baseUrl}profile`);
+// }
+
+// PUT   /profile
+// PATCH /profile
+
+export { getItems, postItems, patchItems, putItems, deleteItems, getProfile };

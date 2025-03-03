@@ -16,3 +16,21 @@
   line-height: 20px;
   letter-spacing: 0%;
 }
+
+.modal__label_padding-remover {
+  padding: 0;
+}
+
+.modal__btn-edit-profile {
+  max-width: 128px;
+  height: 36px;
+  border-radius: 4px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
