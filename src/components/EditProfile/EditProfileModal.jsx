@@ -2,7 +2,12 @@ import React, { useState } from "react";
 
 import "./EditProfileModal.css";
 
-function EditProfileModal({ activeModal, onClose, handlePatchProfile }) {
+function EditProfileModal({
+  activeModal,
+  onClose,
+  handlePatchProfile,
+  getProfileData,
+}) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
 

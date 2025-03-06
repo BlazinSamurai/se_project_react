@@ -20,7 +20,8 @@ function getItems() {
 // will be ignored. Only a value set in a POST request will be respected, but only if not already taken
 // A POST, PUT or PATCH request should include a Content-Type: application/json
 // header to use the JSON in the request body
-//POST creates a resource
+// POST http://localhost:3001/items
+// POST creates a resource
 function postItems(card) {
   // when we remove the 's' from items you get a "Router not found" error
   return request(`${baseUrl}items`, {
@@ -78,14 +79,14 @@ function deleteItems(id) {
   });
 }
 
-// GET   /profile
+// GET   http://localhost:3001/profile
 function getProfile() {
   return request(`${baseUrl}profile`);
 }
 
 // PATCH /profile
 function patchProfile(info) {
-  return request(`${baseUrl}profile/change-profile-data`, {
+  return request(`${baseUrl}profile`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

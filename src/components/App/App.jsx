@@ -1,7 +1,7 @@
 // wrapper for the whole application
 // therefore, is the parent of other top-level components
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey, temp } from "../../utils/constants";
 import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
@@ -30,6 +30,8 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfile/EditProfileModal";
+import LogInModal from "../LoginModal/LoginModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -46,6 +48,8 @@ function App() {
   });
   const [currentTempUnit, setTempToggle] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  // Add the isLoggedIn state variable with default value of 'false'.
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -95,6 +99,15 @@ function App() {
         const newClothingItems = clothingItems.filter((item) => item._id != id);
         setClothingItems([...newClothingItems]);
         closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const getProfileData = () => {
+    getProfile()
+      .then((data) => {
+        console.log(data);
+        return data;
       })
       .catch(console.error);
   };
@@ -183,8 +196,6 @@ function App() {
             <Route
               path="/"
               element={
-                // the name on the left of the operator('=') is what
-                // you're passing
                 <Main
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
@@ -195,12 +206,36 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    onCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                    onAddNewClick={handleAddClick}
+                    editProfile={handleEditProfile}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <LogInModal
+                  isOpen={activeModal === "login"}
+                  closeActiveModal={closeActiveModal}
+                  weatherData={weatherData}
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
-                  onAddNewClick={handleAddClick}
-                  editProfile={handleEditProfile}
                 />
+              }
+            />
+            <Route
+              // path="*" often acts as a catch-all route.
+              // This means that it will match any URL that
+              // doesn't match any other defined routes
+              path="*"
+              element={
+                // condition ? expressionIfTrue : expressionIfFalse
+                isLoggedIn ? <Navigate to="/profile" /> : <Navigate to="/" />
               }
             />
           </Routes>
@@ -235,6 +270,7 @@ function App() {
           activeModal={activeModal}
           onClose={closeActiveModal}
           handlePatchProfile={handlePatchProfile}
+          getProfileData={getProfileData}
         />
       </CurrentTempUnitContext.Provider>
     </div>

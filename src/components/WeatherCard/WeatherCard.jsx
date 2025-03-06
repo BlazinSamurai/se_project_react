@@ -13,11 +13,6 @@ function WeatherCard({ weatherData }) {
     );
   });
 
-  // ? is for if filteredOptions is undefined or empy
-  // then dont get the url, options chaining I
-  //believe is what he called it
-  // const weatherOptionUrl = filteredOptions[0]?.url;
-
   let weatherOption;
   if (filteredOptions.length === 0) {
     weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
