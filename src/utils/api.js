@@ -98,36 +98,6 @@ function patchProfile(info) {
   });
 }
 
-// /signup for user registration
-function signUp(info) {
-  return request(`${baseUrl}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: info.name,
-      avatar: info.avatar,
-      email: info.email,
-      password: info.password,
-    }),
-  });
-}
-
-// /signin for user authorization
-function signIn(info) {
-  return request(`${baseUrl}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: info.email,
-      password: info.password,
-    }),
-  });
-}
-
 export {
   getItems,
   postItems,
@@ -136,6 +106,4 @@ export {
   deleteItems,
   getProfile,
   patchProfile,
-  signUp,
-  signIn,
 };

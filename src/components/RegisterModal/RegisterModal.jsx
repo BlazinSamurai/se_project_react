@@ -2,90 +2,104 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ isOpen, closeActiveModal }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    avatarUrl: "",
+  });
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-  const handleAvatarChange = (e) => {
-    setAvatar(e.target.value);
+
+  // Declare a submission handler function. This function just needs
+  // to prevent the default browser behavior, and call
+  // handleRegistration, passing it the data from the form
+  // submission.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleRegistration(data);
   };
 
   return (
-    <ModalWithForm
-      buttonText="Sign Up"
-      title="Sign Up"
-      isOpen={isOpen}
-      onClose={closeActiveModal}
-      // onSubmit={handleSubmit}
-    >
-      <label htmlFor="email" className="modal__label modal__label_span">
-        Email*{" "}
-        <input
-          type="email"
-          className="modal__input"
-          minLength="1"
-          maxLength="30"
-          id="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <span className="modal__span-divider"></span>
-      </label>
-      <label htmlFor="password" className="modal__label modal__label_span">
-        Password*{" "}
-        <input
-          type="password"
-          className="modal__input"
-          minLength="1"
-          maxLength="30"
-          id="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <span className="modal__span-divider"></span>
-      </label>
-      <label htmlFor="name" className="modal__label modal__label_span">
-        Name*{" "}
-        <input
-          type="text"
-          className="modal__input"
-          minLength="1"
-          maxLength="30"
-          id="name"
-          placeholder="Name"
-          value={name}
-          onChange={handleNameChange}
-        />
-        <span className="modal__span-divider"></span>
-      </label>
-      <label htmlFor="avatarURL" className="modal__label modal__label_span">
-        Avatar URL*{" "}
-        <input
-          type="url"
-          className="modal__input"
-          minLength="1"
-          maxLength="30"
-          id="avatarURL"
-          placeholder="Avatar URL"
-          value={avatar}
-          onChange={handleAvatarChange}
-        />
-        <span className="modal__span-divider"></span>
-      </label>
-    </ModalWithForm>
+    <register>
+      <ModalWithForm
+        buttonText="Sign Up"
+        title="Sign Up"
+        isOpen={isOpen}
+        onClose={closeActiveModal}
+        onSubmit={handleSubmit}
+        login={true}
+        signup={false}
+      >
+        <label htmlFor="email" className="modal__label modal__label_span">
+          Email*{" "}
+          <input
+            name="email"
+            type="email"
+            className="modal__input"
+            minLength="1"
+            maxLength="30"
+            id="email"
+            placeholder="Email"
+            value={data.email}
+            onChange={handleChange}
+          />
+          <span className="modal__span-divider"></span>
+        </label>
+        <label htmlFor="password" className="modal__label modal__label_span">
+          Password*{" "}
+          <input
+            name="password"
+            type="password"
+            className="modal__input"
+            minLength="1"
+            maxLength="30"
+            id="password"
+            placeholder="Password"
+            value={data.password}
+            onChange={handleChange}
+          />
+          <span className="modal__span-divider"></span>
+        </label>
+        <label htmlFor="name" className="modal__label modal__label_span">
+          Name*{" "}
+          <input
+            name="name"
+            type="text"
+            className="modal__input"
+            minLength="1"
+            maxLength="30"
+            id="name"
+            placeholder="Name"
+            value={data.name}
+            onChange={handleChange}
+          />
+          <span className="modal__span-divider"></span>
+        </label>
+        <label htmlFor="avatarUrl" className="modal__label modal__label_span">
+          Avatar URL*{" "}
+          <input
+            name="avatarUrl"
+            type="url"
+            className="modal__input"
+            minLength="1"
+            maxLength="30"
+            id="avatarUrl"
+            placeholder="Avatar URL"
+            value={data.avatarUrl}
+            onChange={handleChange}
+          />
+          <span className="modal__span-divider"></span>
+        </label>
+      </ModalWithForm>
+    </register>
   );
 };
 

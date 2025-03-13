@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey, temp } from "../../utils/constants";
 import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
+import { signUp, signIn } from "../../utils/auth";
 import {
   getItems,
   postItems,
@@ -13,8 +14,6 @@ import {
   deleteItems,
   getProfile,
   patchProfile,
-  signUp,
-  signIn,
 } from "../../utils/api";
 
 import { setToken, getToken } from "../../utils/token";
@@ -131,8 +130,8 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleRegistrationSubmit = (email, password, name, avatarULR) => {
-    signUp({ email, password, name, avatar })
+  const handleRegistration = (email, password, name, avatarUrl) => {
+    signUp({ email, password, name, avatarUrl })
       .then((info) => {
         console.log("user registered?");
         closeActiveModal();
@@ -194,16 +193,6 @@ function App() {
 
           <Routes>
             <Route
-              path="/"
-              element={
-                <Main
-                  weatherData={weatherData}
-                  onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                />
-              }
-            />
-            <Route
               path="/profile"
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
@@ -220,8 +209,28 @@ function App() {
               path="/login"
               element={
                 <LogInModal
-                  isOpen={activeModal === "login"}
+                  isOpen={true}
                   closeActiveModal={closeActiveModal}
+                  weatherData={weatherData}
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <RegisterModal
+                  isOpen={true}
+                  closeActiveModal={closeActiveModal}
+                  handleRegistration={handleRegistration}
+                />
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <Main
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
@@ -262,10 +271,6 @@ function App() {
           onDelete={handleDelete}
         />
 
-        <RegisterModal
-          isOpen={activeModal === "register"}
-          closeActiveModal={closeActiveModal}
-        />
         <EditProfileModal
           activeModal={activeModal}
           onClose={closeActiveModal}

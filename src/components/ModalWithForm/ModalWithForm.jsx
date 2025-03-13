@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import "./ModalWithForm.css";
 
 function ModalWithForm({
@@ -7,7 +9,12 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
+  login,
+  signup,
 }) {
+  const [isLoginButton] = useState(login);
+  const [isSignupButton] = useState(signup);
+
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div className="modal__content">
@@ -19,6 +26,12 @@ function ModalWithForm({
           <button type="submit" className="modal__submit">
             {buttonText}
           </button>
+          <div>
+            {isLoginButton ? <button type="button">or Log In</button> : null}
+          </div>
+          <div>
+            {isSignupButton ? <button type="button">or Sign Up</button> : null}
+          </div>
         </form>
       </div>
     </div>
