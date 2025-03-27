@@ -20,6 +20,10 @@ const LogInModal = ({
     setPassword(e.target.value);
   };
 
+  const cssRules = {
+    paddingBottom: 32,
+  };
+
   return (
     <login>
       <Main
@@ -32,8 +36,8 @@ const LogInModal = ({
         title="Log in"
         isOpen={isOpen}
         onClose={closeActiveModal}
-        login={false}
-        signup={true}
+        login={true}
+        signup={false}
       >
         <label htmlFor="email" className="modal__label modal__label_span">
           Email*{" "}
@@ -49,7 +53,11 @@ const LogInModal = ({
           />
           <span className="modal__span-divider"></span>
         </label>
-        <label htmlFor="password" className="modal__label modal__label_span">
+        <label
+          htmlFor="password"
+          className="modal__label modal__label_span"
+          style={cssRules}
+        >
           Password*{" "}
           <input
             type="password"
@@ -63,6 +71,8 @@ const LogInModal = ({
           />
           <span className="modal__span-divider"></span>
         </label>
+        {/* Can pass in a second button, not sure if this is the better way */}
+        {/* <button type="button"> or Register </button> */}
       </ModalWithForm>
     </login>
   );

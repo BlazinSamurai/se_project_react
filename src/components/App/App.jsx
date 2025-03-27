@@ -47,7 +47,6 @@ function App() {
   });
   const [currentTempUnit, setTempToggle] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  // Add the isLoggedIn state variable with default value of 'false'.
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const closeActiveModal = () => {

@@ -51,8 +51,24 @@
   border: 1px;
 }
 
+.modal__content-login {
+  max-width: 496px;
+  height: 304px;
+}
+
+.modal__content-signup {
+  background-color: blanchedalmond;
+}
+
 .modal__form {
   width: 100%;
+}
+
+.modal__button-container {
+  display: flex;
+  max-width: 164px;
+  height: 36px;
+  align-items: center;
 }
 
 .modal__input {
@@ -111,13 +127,18 @@
   outline: 2px solid blue; */
 }
 
-.modal__submit {
-  width: 124px;
-  height: 36px;
-  font-family: Cabinet Grotesk, cursive;
+.modal__button-text {
+  font-family: Cabinet Grotesk;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+  letter-spacing: 0%;
+  cursor: pointer;
+}
+
+.modal__button-submit {
+  width: 124px;
+  height: 36px;
   margin-top: 32px;
   color: white;
   background-color: rgba(0, 0, 0, 1);
@@ -125,6 +146,30 @@
   border-radius: 4px;
 }
 
-.modal__submit:hover {
+.modal__button-submit:hover {
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__button-submit-no-margin {
+  margin: 0;
+}
+
+.modal__button-login {
+  padding: 0;
+  width: 60px;
+  height: 20px;
+  border: none;
+  background-color: #fff;
+  color: gray;
+  margin-left: 12px;
+}
+
+.modal__button-register {
+  padding: 0;
+  width: 79px;
+  height: 20px;
+  border: none;
+  background-color: #fff;
+  color: gray;
+  margin-left: 12px;
 }
