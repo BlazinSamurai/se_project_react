@@ -47,6 +47,7 @@ function App() {
   });
   const [currentTempUnit, setTempToggle] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const closeActiveModal = () => {
@@ -72,6 +73,14 @@ function App() {
 
   const handleEditProfile = () => {
     setActiveModal("editProfile");
+  };
+
+  const openRegistrationModal = () => {
+    setActiveModal("register");
+  };
+
+  const openLoginModal = () => {
+    setActiveModal("login");
   };
 
   const handleToggleSwitchChange = () => {
@@ -204,28 +213,28 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
+            {/* <Route
               path="/login"
               element={
                 <LogInModal
-                  isOpen={true}
+                  isOpen={activeModal === "login"}
                   closeActiveModal={closeActiveModal}
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                 />
               }
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="/register"
               element={
                 <RegisterModal
-                  isOpen={true}
+                  isOpen={activeModal === "register"}
                   closeActiveModal={closeActiveModal}
                   handleRegistration={handleRegistration}
                 />
               }
-            />
+            /> */}
             <Route
               path="/"
               element={
@@ -254,6 +263,23 @@ function App() {
           isOpen={activeModal === "add-garment"}
           onAddItem={handleAddItemSubmit}
           closeActiveModal={closeActiveModal}
+        />
+
+        {/* they should be rendered similarly to how 
+            AddItemModal is rendered (outside the Routes) 
+        */}
+        <LogInModal
+          isOpen={activeModal === "login"}
+          closeActiveModal={closeActiveModal}
+          // weatherData={weatherData}
+          // onCardClick={handleCardClick}
+          // clothingItems={clothingItems}
+        />
+
+        <RegisterModal
+          isOpen={activeModal === "register"}
+          closeActiveModal={closeActiveModal}
+          handleRegistration={handleRegistration}
         />
 
         <ItemModal

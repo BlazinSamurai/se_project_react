@@ -35,8 +35,8 @@ const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
       isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
-      login={false}
-      signup={true}
+      loginState={false}
+      signupState={true}
     >
       <label htmlFor="email" className="modal__label modal__label_span">
         Email*{" "}

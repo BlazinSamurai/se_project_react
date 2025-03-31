@@ -31,8 +31,8 @@ const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
       isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
-      login={false}
-      signup={false}
+      loginState={false}
+      signupState={false}
     >
       {/* htmlFor and id should match, 
           the style below gets passed in

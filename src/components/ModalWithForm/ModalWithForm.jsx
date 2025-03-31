@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./ModalWithForm.css";
 
@@ -9,12 +10,25 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
-  login,
-  signup,
-  activeModal,
+  loginState,
+  signupState,
 }) {
-  const [isLoginModal] = useState(login);
-  const [isSignupModal] = useState(signup);
+  const [login, setLogin] = useState(loginState);
+  const [signup, setSignup] = useState(signupState);
+
+  const handleLoginChange = () => {
+    setLogin(true);
+    setSignup(false);
+  };
+
+  const handleSignupChange = () => {
+    setLogin(false);
+    setSignup(true);
+  };
+
+  const handleClose = () => {
+    onClose();
+  };
 
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
@@ -27,7 +41,7 @@ function ModalWithForm({
       >
         <h2 className="modal__title">{title}</h2>
         {/* You can use self closing tags if there are no children */}
-        <button onClick={onClose} type="button" className="modal__close" />
+        <button onClick={handleClose} type="button" className="modal__close" />
         <form action="" className="modal__form" onSubmit={onSubmit}>
           {children}
           <div className="modal__button-container">
@@ -43,30 +57,36 @@ function ModalWithForm({
             >
               {buttonText}
             </button>
-            <div>
-              {/* http://localhost:3000/register 
+            <Link to={"/login"}>
+              <div>
+                {/* http://localhost:3000/register 
                 title: Signup */}
-              {isSignupModal ? (
-                <button
-                  type="button"
-                  className="modal__button-text modal__button-login"
-                >
-                  or Log in
-                </button>
-              ) : null}
-            </div>
-            <div>
-              {/* http://localhost:3000/login 
+                {signup ? (
+                  <button
+                    onClick={handleLoginChange}
+                    type="button"
+                    className="modal__button-text modal__button-login"
+                  >
+                    or Log in
+                  </button>
+                ) : null}
+              </div>
+            </Link>
+            <Link to="/register">
+              <div>
+                {/* http://localhost:3000/login 
                 title: Log in */}
-              {isLoginModal ? (
-                <button
-                  type="button"
-                  className="modal__button-text modal__button-register"
-                >
-                  or Register
-                </button>
-              ) : null}
-            </div>
+                {login ? (
+                  <button
+                    onClick={handleSignupChange}
+                    type="button"
+                    className="modal__button-text modal__button-register"
+                  >
+                    or Register
+                  </button>
+                ) : null}
+              </div>
+            </Link>
           </div>
         </form>
       </div>
