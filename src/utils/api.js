@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001/";
+const baseUrl = "http://localhost:3001";
 
 function checkResponse(res) {
   if (res.ok) {
@@ -13,7 +13,7 @@ function request(url, options) {
 }
 
 function getItems() {
-  return request(`${baseUrl}items`);
+  return request(`${baseUrl}/items`);
 }
 
 // Id values are not mutable. Any id value in the body of your PUT or PATCH request
@@ -24,7 +24,7 @@ function getItems() {
 // POST creates a resource
 function postItems(card) {
   // when we remove the 's' from items you get a "Router not found" error
-  return request(`${baseUrl}items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +40,7 @@ function postItems(card) {
 // PATCH http://localhost:3001/items/:id
 // PATCH updates a resource
 function patchItems(card, id) {
-  return request(`${baseUrl}items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -57,7 +57,7 @@ function patchItems(card, id) {
 // PUT http://localhost:3001/items/:id
 // PUT replaces a resource
 function putItems(card, id) {
-  return request(`${baseUrl}items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -74,19 +74,19 @@ function putItems(card, id) {
 // DELETE http://localhost:3001/items/:id
 // ':id' represents a variable and SHOULD NOT be included in the FINAL URL
 function deleteItems(id) {
-  return request(`${baseUrl}items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
   });
 }
 
 // GET   http://localhost:3001/profile
 function getProfile() {
-  return request(`${baseUrl}profile`);
+  return request(`${baseUrl}/profile`);
 }
 
 // PATCH /profile
 function patchProfile(info) {
-  return request(`${baseUrl}profile`, {
+  return request(`${baseUrl}/profile`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -98,6 +98,21 @@ function patchProfile(info) {
   });
 }
 
+// getContent accepts the token as an argument.
+// Send a GET request to /users/me
+function getUserInfo(token) {
+  return request(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      // Specify an authorization header with an appropriately
+      // formatted value.
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
 export {
   getItems,
   postItems,
@@ -106,4 +121,5 @@ export {
   deleteItems,
   getProfile,
   patchProfile,
+  getUserInfo,
 };

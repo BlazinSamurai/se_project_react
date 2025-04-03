@@ -7,18 +7,30 @@ import { Link } from "react-router-dom";
 const LogInModal = ({
   isOpen,
   closeActiveModal,
+  handleLogin,
+  openRegistrationModal,
   // weatherData,
   // onCardClick,
   // clothingItems,
 }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+
+  // handleSubmit prevents the default browser behavior and calls
+  // the login handler.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin(data);
   };
 
   const cssRules = {
@@ -31,6 +43,7 @@ const LogInModal = ({
       title="Log in"
       isOpen={isOpen}
       onClose={closeActiveModal}
+      onSubmit={handleSubmit}
       login={true}
       signup={false}
     >
@@ -43,8 +56,8 @@ const LogInModal = ({
           maxLength="30"
           id="email"
           placeholder="Email"
-          value={email}
-          onChange={handleEmailChange}
+          value={data.email}
+          onChange={handleChange}
         />
         <span className="modal__span-divider"></span>
       </label>
@@ -61,8 +74,8 @@ const LogInModal = ({
           maxLength="30"
           id="password"
           placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
+          value={data.password}
+          onChange={handleChange}
         />
         <span className="modal__span-divider"></span>
       </label>

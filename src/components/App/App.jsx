@@ -1,22 +1,27 @@
 // wrapper for the whole application
 // therefore, is the parent of other top-level components
-import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey, temp } from "../../utils/constants";
 import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
-import { signUp, signIn } from "../../utils/auth";
 import {
-  getItems,
-  postItems,
-  patchItems,
-  putItems,
-  deleteItems,
-  getProfile,
-  patchProfile,
-} from "../../utils/api";
-
+  CurrentUserContext,
+  CurrentUserProvider,
+} from "../../Context/CurrentUserContext";
+import { signUp, signIn, authorize } from "../../utils/auth";
 import { setToken, getToken } from "../../utils/token";
+
+// imports all exported members (variables, functions, components, etc.)
+// from the specified module and assigns them as properties of a single
+// object named api
+import * as api from "../../utils/api";
 
 import "./App.css";
 
@@ -32,23 +37,28 @@ import EditProfileModal from "../EditProfile/EditProfileModal";
 import LogInModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-function App() {
+function AppContent() {
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999 },
     city: "",
   });
-  const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({
     link: "",
     name: "",
     weather: "",
     _id: "",
   });
+  const [activeModal, setActiveModal] = useState("");
   const [currentTempUnit, setTempToggle] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // userData: is typically a temporary state used to store form
+  // data during the registration/login process
+  const [userData, setUserData] = useState({ username: "", email: "" });
+  const { currentUser, isLoggedIn, setCurrentUser, setIsLoggedIn } =
+    useContext(CurrentUserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -92,7 +102,8 @@ function App() {
   };
 
   const handleAddItemSubmit = (name, weather, link) => {
-    postItems({ name, weather, link })
+    api
+      .postItems({ name, weather, link })
       .then((item) => {
         setClothingItems([item.data, ...clothingItems]);
         closeActiveModal();
@@ -101,7 +112,8 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    deleteItems(id)
+    api
+      .deleteItems(id)
       .then(() => {
         const newClothingItems = clothingItems.filter((item) => item._id != id);
         setClothingItems([...newClothingItems]);
@@ -110,63 +122,60 @@ function App() {
       .catch(console.error);
   };
 
-  const getProfileData = () => {
-    getProfile()
-      .then((data) => {
-        console.log(data);
-        return data;
+  const handleRegistration = (email, password, name, avatarUrl) => {
+    signUp({ email, password, name, avatarUrl })
+      .then(() => {
+        console.log("REGISTRATION SUCCESSFUL!");
+        navigate("/login");
       })
       .catch(console.error);
   };
 
-  const handleLogin = ({ username, password }) => {
+  const handleLogin = (userData) => {
+    setCurrentUser(userData.user);
+    setIsLoggedIn(true);
+    setToken(userData.jwt);
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+  };
+
+  // handleLogin accepts one parameter: an object with two properties.
+  const handleLoginSubmit = ({ username, password }) => {
+    // If username or password empty, return without sending a request.
     if (!username || !password) {
       return;
     }
 
-    auth
-      .authorize(username, password)
+    // We pass the username and password as positional arguments. The
+    // authorize function is set up to rename `username` to `identifier`
+    // before sending a request to the server, because that is what the
+    // API is expecting.
+    authorize(username, password)
       .then((data) => {
         if (data.jwt) {
+          console.log(data.jwt);
           // Save the token to local storage
-          setToken(data.jwt);
+          // setToken(data.jwt);
           // setUserData(data.user);
-          setIsLoggedIn(true);
-          // navigate("/ducks");
+          handleLogin(data);
+
+          // After login, instead of navigating always to /profile,
+          // navigate to the location that is stored in state. If
+          // there is no stored location, we default to
+          // redirecting to /profile.
+          const redirectPath = location.state?.from?.pathname || "/profile";
+          navigate(redirectPath);
         }
       })
-      .catch((err) => console.log(err));
-  };
-
-  const handleRegistration = (email, password, name, avatarUrl) => {
-    signUp({ email, password, name, avatarUrl })
-      .then((info) => {
-        console.log("user registered?");
-        closeActiveModal();
-      })
       .catch(console.error);
   };
 
-  // Going to have to create a edit profile submit function???
-  const handlePatchProfile = (name, avatar) => {
-    patchProfile({ name, avatar })
-      .then((result) => {
-        console.log(result);
-        closeActiveModal();
-      })
-      .catch(console.error);
-  };
-
-  // const handleGetProfile = (name, avatar) => {
-  //   getProfile()
-  //     .then(() => {
-  //       console.log(name + avatar);
-  //     })
-  //     .catch(console.error);
-  // };
-
-  // pass a empty array the function will only get used once
-  // when it first loads
+  // we can use a useEffect with an empty dependency array to
+  // specify code that runs a single time when the component
+  // first loads.
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -178,16 +187,39 @@ function App() {
 
   // we need to specify a dependency, a variable which
   // will cause the hook to be executed whenever it is changed
-  // These variables can be props or the internal state variables of the current component
+  // These variables can be props or the internal state
+  // variables of the current component
   useEffect(() => {
-    getItems()
+    api
+      .getItems()
       .then((data) => {
         setClothingItems([...data]);
       })
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    const jwt = getToken();
+
+    if (!jwt) {
+      setCurrentUser(null); //not a function
+      setIsLoggedIn(false); //not a function
+      return;
+    }
+
+    // console.log(`token?(jwt): ${jwt}`);
+    // Call the function, passing it the JWT.
+    api
+      .getUserInfo(jwt)
+      .then((data) => {
+        handleLogin(data);
+        // console.log(`data from useEffect: ${data}`);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
+    // <CurrentUserContext.Providervalue= {{ currentUser, isLoggedIn, setCurrentUser, setIsLoggedIn }}>
     <div className="page">
       <CurrentTempUnitContext.Provider
         value={{ currentTempUnit, handleToggleSwitchChange }}
@@ -197,6 +229,7 @@ function App() {
             handleAddClick={handleAddClick}
             handleProfileClick={handleProfileClick}
             weatherData={weatherData}
+            userData={userData}
           />
 
           <Routes>
@@ -213,28 +246,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route
-              path="/login"
-              element={
-                <LogInModal
-                  isOpen={activeModal === "login"}
-                  closeActiveModal={closeActiveModal}
-                  weatherData={weatherData}
-                  onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                />
-              }
-            /> */}
-            {/* <Route
-              path="/register"
-              element={
-                <RegisterModal
-                  isOpen={activeModal === "register"}
-                  closeActiveModal={closeActiveModal}
-                  handleRegistration={handleRegistration}
-                />
-              }
-            /> */}
             <Route
               path="/"
               element={
@@ -271,15 +282,15 @@ function App() {
         <LogInModal
           isOpen={activeModal === "login"}
           closeActiveModal={closeActiveModal}
-          // weatherData={weatherData}
-          // onCardClick={handleCardClick}
-          // clothingItems={clothingItems}
+          handleLoginSubmit={handleLoginSubmit}
+          openRegistrationModal={openRegistrationModal}
         />
 
         <RegisterModal
           isOpen={activeModal === "register"}
           closeActiveModal={closeActiveModal}
           handleRegistration={handleRegistration}
+          openLoginModal={openLoginModal}
         />
 
         <ItemModal
@@ -299,11 +310,19 @@ function App() {
         <EditProfileModal
           activeModal={activeModal}
           onClose={closeActiveModal}
-          handlePatchProfile={handlePatchProfile}
-          getProfileData={getProfileData}
         />
       </CurrentTempUnitContext.Provider>
     </div>
+    //  </CurrentUserContext.Provider>
+  );
+}
+
+// Wrap the entire App component
+function App() {
+  return (
+    <CurrentUserProvider>
+      <AppContent />
+    </CurrentUserProvider>
   );
 }
 

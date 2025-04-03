@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001/";
+const baseUrl = "http://localhost:3001";
 
 function checkResponse(res) {
   if (res.ok) {
@@ -14,7 +14,7 @@ function request(url, options) {
 
 // POST /signup for user registration
 function signUp(info) {
-  return request(`${baseUrl}`, {
+  return request(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +30,7 @@ function signUp(info) {
 
 // POST /signin for user authorization
 function signIn(info) {
-  return request(`${baseUrl}`, {
+  return request(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -42,4 +42,20 @@ function signIn(info) {
   });
 }
 
-export { signUp, signIn };
+//POST /auth/local
+// The authorize function accepts the necessary data as parameters.
+function authorize(identifier, password) {
+  // A POST request is sent to /auth/local.
+  return request(`${baseUrl}/auth/local`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    // The parameters are wrapped in an object, converted to a JSON
+    // string, and sent in the body of the request.
+    body: JSON.stringify({ identifier, password }),
+  });
+}
+
+export { signUp, signIn, authorize };
