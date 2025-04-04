@@ -20,10 +20,10 @@ function signUp(info) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name: info.name,
-      avatar: info.avatar,
       email: info.email,
       password: info.password,
+      name: info.name,
+      avatar: info.avatarUrl,
     }),
   });
 }
@@ -44,7 +44,7 @@ function signIn(info) {
 
 //POST /auth/local
 // The authorize function accepts the necessary data as parameters.
-function authorize(identifier, password) {
+function authorize(email, password) {
   // A POST request is sent to /auth/local.
   return request(`${baseUrl}/auth/local`, {
     method: "POST",
@@ -54,7 +54,7 @@ function authorize(identifier, password) {
     },
     // The parameters are wrapped in an object, converted to a JSON
     // string, and sent in the body of the request.
-    body: JSON.stringify({ identifier, password }),
+    body: JSON.stringify({ email, password }),
   });
 }
 

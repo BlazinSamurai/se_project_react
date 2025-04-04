@@ -17,6 +17,7 @@
 .sidebar__display-info_avatar {
   width: 56px;
   height: 56px;
+  border-radius: 29px;
 }
 
 .sidebar__display-info_username {

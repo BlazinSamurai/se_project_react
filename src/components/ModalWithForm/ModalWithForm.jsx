@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import "./ModalWithForm.css";
 
@@ -47,6 +46,7 @@ function ModalWithForm({
           <div className="modal__button-container">
             {/* {secondButton} */}
             <button
+              onClick={handleClose}
               type="submit"
               className={`modal__button-text 
                 ${
@@ -57,36 +57,32 @@ function ModalWithForm({
             >
               {buttonText}
             </button>
-            <Link to={"/login"}>
-              <div>
-                {/* http://localhost:3000/register 
+            <div>
+              {/* http://localhost:3000/register 
                 title: Signup */}
-                {signup ? (
-                  <button
-                    onClick={handleLoginChange}
-                    type="button"
-                    className="modal__button-text modal__button-login"
-                  >
-                    or Log in
-                  </button>
-                ) : null}
-              </div>
-            </Link>
-            <Link to="/register">
-              <div>
-                {/* http://localhost:3000/login 
+              {signup ? (
+                <button
+                  onClick={handleLoginChange}
+                  type="button"
+                  className="modal__button-text modal__button-login"
+                >
+                  or Log in
+                </button>
+              ) : null}
+            </div>
+            <div>
+              {/* http://localhost:3000/login 
                 title: Log in */}
-                {login ? (
-                  <button
-                    onClick={handleSignupChange}
-                    type="button"
-                    className="modal__button-text modal__button-register"
-                  >
-                    or Register
-                  </button>
-                ) : null}
-              </div>
-            </Link>
+              {login ? (
+                <button
+                  onClick={handleSignupChange}
+                  type="button"
+                  className="modal__button-text modal__button-register"
+                >
+                  or Register
+                </button>
+              ) : null}
+            </div>
           </div>
         </form>
       </div>

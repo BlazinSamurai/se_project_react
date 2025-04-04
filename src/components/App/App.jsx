@@ -124,9 +124,10 @@ function AppContent() {
 
   const handleRegistration = (email, password, name, avatarUrl) => {
     signUp({ email, password, name, avatarUrl })
-      .then(() => {
+      .then((user) => {
         console.log("REGISTRATION SUCCESSFUL!");
-        navigate("/login");
+        setCurrentUser(user);
+        setIsLoggedIn(true);
       })
       .catch(console.error);
   };
@@ -143,9 +144,9 @@ function AppContent() {
   };
 
   // handleLogin accepts one parameter: an object with two properties.
-  const handleLoginSubmit = ({ username, password }) => {
+  const handleLoginSubmit = ({ email, password }) => {
     // If username or password empty, return without sending a request.
-    if (!username || !password) {
+    if (!email || !password) {
       return;
     }
 
@@ -153,13 +154,11 @@ function AppContent() {
     // authorize function is set up to rename `username` to `identifier`
     // before sending a request to the server, because that is what the
     // API is expecting.
-    authorize(username, password)
+    authorize(email, password)
       .then((data) => {
         if (data.jwt) {
           console.log(data.jwt);
           // Save the token to local storage
-          // setToken(data.jwt);
-          // setUserData(data.user);
           handleLogin(data);
 
           // After login, instead of navigating always to /profile,
@@ -202,24 +201,20 @@ function AppContent() {
     const jwt = getToken();
 
     if (!jwt) {
-      setCurrentUser(null); //not a function
-      setIsLoggedIn(false); //not a function
+      setCurrentUser(null);
+      setIsLoggedIn(false);
       return;
     }
 
-    // console.log(`token?(jwt): ${jwt}`);
-    // Call the function, passing it the JWT.
     api
       .getUserInfo(jwt)
       .then((data) => {
         handleLogin(data);
-        // console.log(`data from useEffect: ${data}`);
       })
       .catch(console.error);
   }, []);
 
   return (
-    // <CurrentUserContext.Providervalue= {{ currentUser, isLoggedIn, setCurrentUser, setIsLoggedIn }}>
     <div className="page">
       <CurrentTempUnitContext.Provider
         value={{ currentTempUnit, handleToggleSwitchChange }}
@@ -228,6 +223,8 @@ function AppContent() {
           <Header
             handleAddClick={handleAddClick}
             handleProfileClick={handleProfileClick}
+            openLoginModal={openLoginModal}
+            openRegistrationModal={openRegistrationModal}
             weatherData={weatherData}
             userData={userData}
           />
@@ -283,14 +280,12 @@ function AppContent() {
           isOpen={activeModal === "login"}
           closeActiveModal={closeActiveModal}
           handleLoginSubmit={handleLoginSubmit}
-          openRegistrationModal={openRegistrationModal}
         />
 
         <RegisterModal
           isOpen={activeModal === "register"}
           closeActiveModal={closeActiveModal}
           handleRegistration={handleRegistration}
-          openLoginModal={openLoginModal}
         />
 
         <ItemModal
@@ -313,7 +308,6 @@ function AppContent() {
         />
       </CurrentTempUnitContext.Provider>
     </div>
-    //  </CurrentUserContext.Provider>
   );
 }
 

@@ -8,7 +8,14 @@ import logo from "../../images/Logo.svg";
 import avatar from "../../images/Ellipse 18.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-function Header({ handleAddClick, handleProfileClick, weatherData, userData }) {
+function Header({
+  handleAddClick,
+  handleProfileClick,
+  openLoginModal,
+  openRegistrationModal,
+  weatherData,
+  userData,
+}) {
   // You need to destructure the setter functions as well if you want to use them
   const { currentUser, setCurrentUser, setIsLoggedIn } =
     useContext(CurrentUserContext);
@@ -29,7 +36,7 @@ function Header({ handleAddClick, handleProfileClick, weatherData, userData }) {
       <ToggleSwitch />
 
       {currentUser ? ( //When user is LOGGED IN
-        <div>
+        <div className="header__container">
           <button
             onClick={handleAddClick}
             type="button"
@@ -45,12 +52,11 @@ function Header({ handleAddClick, handleProfileClick, weatherData, userData }) {
                 type="button"
                 className="header__username"
               >
-                {/* Terrence Tegegne */}
-                {userData.username}
+                {currentUser.name}
               </button>
               <img
-                src={avatar}
-                alt="Terrence Tegegne"
+                src={currentUser.avatar}
+                alt={"Pic"}
                 className="header__avatar"
               />
             </div>
@@ -59,7 +65,20 @@ function Header({ handleAddClick, handleProfileClick, weatherData, userData }) {
       ) : (
         //When user is LOGGED OUT
         <div>
-          <p> USER is LOGGED OUT</p>
+          <button
+            onClick={openRegistrationModal}
+            type="button"
+            // className="header__add-clothes-btn"
+          >
+            Sign Up
+          </button>
+          <button
+            onClick={openLoginModal}
+            type="button"
+            // className="header__add-clothes-btn"
+          >
+            Log In
+          </button>
         </div>
       )}
     </header>

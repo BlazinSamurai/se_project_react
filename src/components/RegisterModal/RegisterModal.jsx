@@ -3,19 +3,22 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
-  const [data, setData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    avatarUrl: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+  const handleAvatarUrlChange = (e) => {
+    setAvatarUrl(e.target.value);
   };
 
   // Declare a submission handler function. This function just needs
@@ -24,11 +27,10 @@ const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
   // submission.
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(data);
+    handleRegistration(email, password, name, avatarUrl);
   };
 
   return (
-    // <register>
     <ModalWithForm
       buttonText="Next"
       title="Sign Up"
@@ -46,10 +48,10 @@ const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="email"
+          id="reg_email"
           placeholder="Email"
-          value={data.email}
-          onChange={handleChange}
+          value={email}
+          onChange={handleEmailChange}
         />
         <span className="modal__span-divider"></span>
       </label>
@@ -61,10 +63,10 @@ const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="password"
+          id="reg_password"
           placeholder="Password"
-          value={data.password}
-          onChange={handleChange}
+          value={password}
+          onChange={handlePasswordChange}
         />
         <span className="modal__span-divider"></span>
       </label>
@@ -76,10 +78,10 @@ const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="name"
+          id="reg_name"
           placeholder="Name"
-          value={data.name}
-          onChange={handleChange}
+          value={name}
+          onChange={handleNameChange}
         />
         <span className="modal__span-divider"></span>
       </label>
@@ -90,16 +92,14 @@ const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
           type="url"
           className="modal__input"
           minLength="1"
-          maxLength="30"
-          id="avatarUrl"
+          id="reg_avatarUrl"
           placeholder="Avatar URL"
-          value={data.avatarUrl}
-          onChange={handleChange}
+          value={avatarUrl}
+          onChange={handleAvatarUrlChange}
         />
         <span className="modal__span-divider"></span>
       </label>
     </ModalWithForm>
-    // </register>
   );
 };
 

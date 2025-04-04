@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 
-import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { Link } from "react-router-dom";
 
-const LogInModal = ({
-  isOpen,
-  closeActiveModal,
-  handleLogin,
-  openRegistrationModal,
-  // weatherData,
-  // onCardClick,
-  // clothingItems,
-}) => {
+const LogInModal = ({ isOpen, closeActiveModal, handleLoginSubmit }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -30,7 +20,7 @@ const LogInModal = ({
   // the login handler.
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(data);
+    handleLoginSubmit(data);
   };
 
   const cssRules = {
@@ -44,17 +34,18 @@ const LogInModal = ({
       isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
-      login={true}
-      signup={false}
+      loginState={true}
+      signupState={false}
     >
       <label htmlFor="email" className="modal__label modal__label_span">
         Email*{" "}
         <input
+          name="email"
           type="email"
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="email"
+          id="login_email"
           placeholder="Email"
           value={data.email}
           onChange={handleChange}
@@ -68,11 +59,12 @@ const LogInModal = ({
       >
         Password*{" "}
         <input
+          name="password"
           type="password"
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="password"
+          id="login_password"
           placeholder="Password"
           value={data.password}
           onChange={handleChange}
@@ -86,3 +78,4 @@ const LogInModal = ({
 };
 
 export default LogInModal;
+//
