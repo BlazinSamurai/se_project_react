@@ -15,7 +15,7 @@ import {
   CurrentUserContext,
   CurrentUserProvider,
 } from "../../Context/CurrentUserContext";
-import { signUp, signIn, authorize } from "../../utils/auth";
+import { signUp, signIn } from "../../utils/auth";
 import { setToken, getToken } from "../../utils/token";
 
 // imports all exported members (variables, functions, components, etc.)
@@ -154,20 +154,21 @@ function AppContent() {
     // authorize function is set up to rename `username` to `identifier`
     // before sending a request to the server, because that is what the
     // API is expecting.
-    authorize(email, password)
+    signIn({ email, password })
       .then((data) => {
-        if (data.jwt) {
-          console.log(data.jwt);
-          // Save the token to local storage
-          handleLogin(data);
+        api.getUserInfo(data.token).then((info) => {
+          setCurrentUser(info);
+          setIsLoggedIn(true);
+          setToken(data.token);
+        });
 
-          // After login, instead of navigating always to /profile,
-          // navigate to the location that is stored in state. If
-          // there is no stored location, we default to
-          // redirecting to /profile.
-          const redirectPath = location.state?.from?.pathname || "/profile";
-          navigate(redirectPath);
-        }
+        //   // After login, instead of navigating always to /profile,
+        //   // navigate to the location that is stored in state. If
+        //   // there is no stored location, we default to
+        //   // redirecting to /profile.
+        //   const redirectPath = location.state?.from?.pathname || "/profile";
+        //   navigate(redirectPath);
+        // }
       })
       .catch(console.error);
   };
