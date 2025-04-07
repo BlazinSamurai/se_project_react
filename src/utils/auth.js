@@ -42,4 +42,19 @@ function signIn(info) {
   });
 }
 
-export { signUp, signIn };
+// getContent accepts the token as an argument.
+// Send a GET request to /users/me
+function getUserInfo(token) {
+  return request(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      // Specify an authorization header with an appropriately
+      // formatted value.
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export { signUp, signIn, getUserInfo };

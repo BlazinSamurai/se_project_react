@@ -18,11 +18,13 @@ function ModalWithForm({
   const handleLoginChange = () => {
     setLogin(true);
     setSignup(false);
+    isOpen === "login";
   };
 
   const handleSignupChange = () => {
     setLogin(false);
     setSignup(true);
+    isOpen === "register";
   };
 
   const handleClose = () => {
@@ -34,8 +36,7 @@ function ModalWithForm({
       <div
         className={` 
           ${login && "modal__content modal__content-login"}
-          ${signup && "modal__content "}
-          ${!signup && !login && "modal__content"}
+          ${!login && "modal__content "}
         `}
       >
         <h2 className="modal__title">{title}</h2>
@@ -48,12 +49,7 @@ function ModalWithForm({
             <button
               onClick={handleClose}
               type="submit"
-              className={`modal__button-text 
-                ${
-                  (signup || login) &&
-                  "modal__button-submit modal__button-submit-no-margin"
-                }
-                ${!signup && !login && "modal__button-submit"}`}
+              className="modal__button-text"
             >
               {buttonText}
             </button>

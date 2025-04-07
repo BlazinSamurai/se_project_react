@@ -15,7 +15,7 @@ import {
   CurrentUserContext,
   CurrentUserProvider,
 } from "../../Context/CurrentUserContext";
-import { signUp, signIn } from "../../utils/auth";
+import { signUp, signIn, getUserInfo } from "../../utils/auth";
 import { setToken, getToken } from "../../utils/token";
 
 // imports all exported members (variables, functions, components, etc.)
@@ -132,10 +132,11 @@ function AppContent() {
       .catch(console.error);
   };
 
-  const handleLogin = (userData) => {
-    setCurrentUser(userData.user);
+  const handleLogin = (token, user) => {
+    console.log("loggin user.");
+    setCurrentUser(user);
     setIsLoggedIn(true);
-    setToken(userData.jwt);
+    setToken(token);
   };
 
   const handleLogout = () => {
@@ -150,13 +151,9 @@ function AppContent() {
       return;
     }
 
-    // We pass the username and password as positional arguments. The
-    // authorize function is set up to rename `username` to `identifier`
-    // before sending a request to the server, because that is what the
-    // API is expecting.
     signIn({ email, password })
       .then((data) => {
-        api.getUserInfo(data.token).then((info) => {
+        getUserInfo(data.token).then((info) => {
           setCurrentUser(info);
           setIsLoggedIn(true);
           setToken(data.token);
@@ -199,18 +196,19 @@ function AppContent() {
   }, []);
 
   useEffect(() => {
+    console.log("'login' useEffect!");
     const jwt = getToken();
 
     if (!jwt) {
+      console.log("No 'jwt'.");
       setCurrentUser(null);
       setIsLoggedIn(false);
       return;
     }
 
-    api
-      .getUserInfo(jwt)
+    getUserInfo(jwt)
       .then((data) => {
-        handleLogin(data);
+        handleLogin(jwt, data);
       })
       .catch(console.error);
   }, []);
