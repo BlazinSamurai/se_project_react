@@ -196,11 +196,11 @@ function AppContent() {
   }, []);
 
   useEffect(() => {
-    console.log("'login' useEffect!");
+    // console.log("'login' useEffect!");
     const jwt = getToken();
 
     if (!jwt) {
-      console.log("No 'jwt'.");
+      // console.log("No 'jwt'.");
       setCurrentUser(null);
       setIsLoggedIn(false);
       return;
@@ -238,6 +238,7 @@ function AppContent() {
                     clothingItems={clothingItems}
                     onAddNewClick={handleAddClick}
                     editProfile={handleEditProfile}
+                    logOut={handleLogout}
                   />
                 </ProtectedRoute>
               }

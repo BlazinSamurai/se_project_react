@@ -4,7 +4,7 @@ import avatarPic from "../../images/Ellipse 18.png";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../Context/CurrentUserContext";
 
-function SideBar({ editProfile }) {
+function SideBar({ editProfile, logOut }) {
   const { currentUser, setCurrentUser, setIsLoggedIn } =
     useContext(CurrentUserContext);
   return (
@@ -25,7 +25,7 @@ function SideBar({ editProfile }) {
       >
         Change profile data
       </button>
-      <button type="button" className="sidebar__logout">
+      <button onClick={logOut} type="button" className="sidebar__logout">
         Log out
       </button>
     </div>

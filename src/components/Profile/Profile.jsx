@@ -3,11 +3,17 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-function Profile({ onCardClick, clothingItems, onAddNewClick, editProfile }) {
+function Profile({
+  onCardClick,
+  clothingItems,
+  onAddNewClick,
+  editProfile,
+  logOut,
+}) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar editProfile={editProfile} />
+        <SideBar editProfile={editProfile} logOut={logOut} />
       </section>
       <section className="profile__clothing-items">
         {/* for smaller components DO NOT rename the
