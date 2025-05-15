@@ -81,7 +81,7 @@ function AppContent() {
     setActiveModal("profile");
   };
 
-  const handleEditProfile = () => {
+  const openEditProfile = () => {
     setActiveModal("editProfile");
   };
 
@@ -142,6 +142,14 @@ function AppContent() {
   const handleLogout = () => {
     setCurrentUser(null);
     setIsLoggedIn(false);
+  };
+
+  const handleEditProfile = (name, avatar) => {
+    const token = getToken();
+    api.patchProfile({ name, avatar }, token).then((info) => {
+      setCurrentUser(info);
+      closeActiveModal();
+    });
   };
 
   // handleLogin accepts one parameter: an object with two properties.
@@ -237,7 +245,7 @@ function AppContent() {
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onAddNewClick={handleAddClick}
-                    editProfile={handleEditProfile}
+                    editProfile={openEditProfile}
                     logOut={handleLogout}
                   />
                 </ProtectedRoute>
@@ -305,6 +313,7 @@ function AppContent() {
         <EditProfileModal
           activeModal={activeModal}
           onClose={closeActiveModal}
+          changeProfile={handleEditProfile}
         />
       </CurrentTempUnitContext.Provider>
     </div>

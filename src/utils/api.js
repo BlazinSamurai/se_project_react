@@ -49,7 +49,7 @@ function patchItems(card, id) {
       name: card.name,
       weather: card.weather,
       imageUrl: card.link,
-      // _id: card.id,
+      _id: card.id,
     }),
   });
 }
@@ -81,15 +81,24 @@ function deleteItems(id) {
 
 // GET   http://localhost:3001/profile
 function getProfile() {
-  return request(`${baseUrl}/profile`);
+  return request(`${baseUrl}/users/me`, {
+    method: "GET",
+  });
 }
 
-// PATCH /profile
-function patchProfile(info) {
-  return request(`${baseUrl}/profile`, {
+// PATCH
+// /profile XXX
+// /users XXX
+// /me XXX
+function patchProfile(info, token) {
+  return request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
+      // Specify an authorization header with an appropriately
+      // formatted value.
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name: info.name,

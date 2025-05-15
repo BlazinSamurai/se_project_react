@@ -2,12 +2,7 @@ import React, { useState } from "react";
 
 import "./EditProfileModal.css";
 
-function EditProfileModal({
-  activeModal,
-  onClose,
-  handlePatchProfile,
-  getProfileData,
-}) {
+function EditProfileModal({ activeModal, onClose, changeProfile }) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
 
@@ -21,7 +16,7 @@ function EditProfileModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handlePatchProfile(name, avatar);
+    changeProfile(name, avatar);
   };
 
   const cssRules = {
