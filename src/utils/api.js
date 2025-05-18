@@ -22,12 +22,16 @@ function getItems() {
 // header to use the JSON in the request body
 // POST http://localhost:3001/items
 // POST creates a resource
-function postItems(card) {
+function postItems(card, token) {
   // when we remove the 's' from items you get a "Router not found" error
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
+      // Specify an authorization header with an appropriately
+      // formatted value.
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name: card.name,
@@ -87,9 +91,6 @@ function getProfile() {
 }
 
 // PATCH
-// /profile XXX
-// /users XXX
-// /me XXX
 function patchProfile(info, token) {
   return request(`${baseUrl}/users/me`, {
     method: "PATCH",

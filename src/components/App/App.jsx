@@ -102,8 +102,9 @@ function AppContent() {
   };
 
   const handleAddItemSubmit = (name, weather, link) => {
+    const token = getToken();
     api
-      .postItems({ name, weather, link })
+      .postItems({ name, weather, link }, token)
       .then((item) => {
         setClothingItems([item.data, ...clothingItems]);
         closeActiveModal();
