@@ -9,22 +9,12 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
+  onSwitchModal,
   loginState,
   signupState,
 }) {
-  const [login, setLogin] = useState(loginState);
-  const [signup, setSignup] = useState(signupState);
-
-  const handleLoginChange = () => {
-    setLogin(true);
-    setSignup(false);
-    isOpen === "login";
-  };
-
-  const handleSignupChange = () => {
-    setLogin(false);
-    setSignup(true);
-    isOpen === "register";
+  const handleSwitchModal = () => {
+    onSwitchModal();
   };
 
   const handleClose = () => {
@@ -35,8 +25,8 @@ function ModalWithForm({
     <div className={`modal ${isOpen && "modal_opened"}`}>
       <div
         className={` 
-          ${login && "modal__content modal__content-login"}
-          ${!login && "modal__content "}
+          ${loginState && "modal__content modal__content-login"}
+          ${!loginState && "modal__content "}
         `}
       >
         <h2 className="modal__title">{title}</h2>
@@ -45,7 +35,6 @@ function ModalWithForm({
         <form action="" className="modal__form" onSubmit={onSubmit}>
           {children}
           <div className="modal__button-container">
-            {/* {secondButton} */}
             <button
               onClick={handleClose}
               type="submit"
@@ -54,11 +43,10 @@ function ModalWithForm({
               {buttonText}
             </button>
             <div>
-              {/* http://localhost:3000/register 
-                title: Signup */}
-              {signup ? (
+              {/* title: Signup */}
+              {signupState ? (
                 <button
-                  onClick={handleLoginChange}
+                  onClick={handleSwitchModal}
                   type="button"
                   className="modal__button-text modal__button-login"
                 >
@@ -67,11 +55,10 @@ function ModalWithForm({
               ) : null}
             </div>
             <div>
-              {/* http://localhost:3000/login 
-                title: Log in */}
-              {login ? (
+              {/* title: Log in */}
+              {loginState ? (
                 <button
-                  onClick={handleSignupChange}
+                  onClick={handleSwitchModal}
                   type="button"
                   className="modal__button-text modal__button-register"
                 >

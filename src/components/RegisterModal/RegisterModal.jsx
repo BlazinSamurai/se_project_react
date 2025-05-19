@@ -2,7 +2,12 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
+const RegisterModal = ({
+  isOpen,
+  closeActiveModal,
+  handleRegistration,
+  onSwitchModal,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -37,6 +42,7 @@ const RegisterModal = ({ isOpen, closeActiveModal, handleRegistration }) => {
       isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
+      onSwitchModal={onSwitchModal}
       loginState={false}
       signupState={true}
     >

@@ -2,7 +2,12 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LogInModal = ({ isOpen, closeActiveModal, handleLoginSubmit }) => {
+const LogInModal = ({
+  isOpen,
+  closeActiveModal,
+  handleLoginSubmit,
+  onSwitchModal,
+}) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -34,6 +39,7 @@ const LogInModal = ({ isOpen, closeActiveModal, handleLoginSubmit }) => {
       isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
+      onSwitchModal={onSwitchModal}
       loginState={true}
       signupState={false}
     >

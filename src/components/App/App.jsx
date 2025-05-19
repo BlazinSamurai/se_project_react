@@ -106,6 +106,10 @@ function AppContent() {
     }
   };
 
+  const handleModalSwitch = (modalType) => {
+    setActiveModal(modalType);
+  };
+
   const handleAddItemSubmit = (name, weather, link) => {
     const token = getToken();
     api
@@ -310,12 +314,14 @@ function AppContent() {
           isOpen={activeModal === "login"}
           closeActiveModal={closeActiveModal}
           handleLoginSubmit={handleLoginSubmit}
+          onSwitchModal={() => handleModalSwitch("register")}
         />
 
         <RegisterModal
           isOpen={activeModal === "register"}
           closeActiveModal={closeActiveModal}
           handleRegistration={handleRegistration}
+          onSwitchModal={() => handleModalSwitch("login")}
         />
 
         <ItemModal
