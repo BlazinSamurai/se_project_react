@@ -77,9 +77,16 @@ function putItems(card, id) {
 
 // DELETE http://localhost:3001/items/:id
 // ':id' represents a variable and SHOULD NOT be included in the FINAL URL
-function deleteItems(id) {
+function deleteItems(id, token) {
   return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      // Specify an authorization header with an appropriately
+      // formatted value.
+      Authorization: `Bearer ${token}`,
+    },
   });
 }
 

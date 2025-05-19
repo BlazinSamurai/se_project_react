@@ -9,7 +9,12 @@ import {
   useLocation,
 } from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { coordinates, APIkey, temp } from "../../utils/constants";
+import {
+  defaultClothingItems,
+  coordinates,
+  APIkey,
+  temp,
+} from "../../utils/constants";
 import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
 import {
   CurrentUserContext,
@@ -113,8 +118,9 @@ function AppContent() {
   };
 
   const handleDelete = (id) => {
+    const token = getToken();
     api
-      .deleteItems(id)
+      .deleteItems(id, token)
       .then(() => {
         const newClothingItems = clothingItems.filter((item) => item._id != id);
         setClothingItems([...newClothingItems]);
@@ -126,7 +132,6 @@ function AppContent() {
   const handleRegistration = (email, password, name, avatarUrl) => {
     signUp({ email, password, name, avatarUrl })
       .then((user) => {
-        console.log("REGISTRATION SUCCESSFUL!");
         setCurrentUser(user);
         setIsLoggedIn(true);
       })
@@ -134,7 +139,6 @@ function AppContent() {
   };
 
   const handleLogin = (token, user) => {
-    console.log("loggin user.");
     setCurrentUser(user);
     setIsLoggedIn(true);
     setToken(token);
@@ -143,6 +147,11 @@ function AppContent() {
   const handleLogout = () => {
     setCurrentUser(null);
     setIsLoggedIn(false);
+    setToken(null);
+
+    const token = getToken();
+    console.log("Inside 'handleLogout'!");
+    console.log(token);
   };
 
   const handleEditProfile = (name, avatar) => {
@@ -196,6 +205,17 @@ function AppContent() {
   // These variables can be props or the internal state
   // variables of the current component
   useEffect(() => {
+    // if (!currentUser) {
+    //   console.log("No User logged in! " + currentUser);
+    // } else {
+    //   console.log("User logged in!!! " + currentUser);
+    //   api
+    //     .getItems()
+    //     .then((data) => {
+    //       setClothingItems([...data]);
+    //     })
+    //     .catch(console.error);
+    // }
     api
       .getItems()
       .then((data) => {
@@ -209,17 +229,18 @@ function AppContent() {
     const jwt = getToken();
 
     if (!jwt) {
-      // console.log("No 'jwt'.");
+      console.log("No 'jwt'.");
       setCurrentUser(null);
       setIsLoggedIn(false);
       return;
+    } else {
+      console.log("'jwt' exist.");
+      getUserInfo(jwt)
+        .then((data) => {
+          handleLogin(jwt, data);
+        })
+        .catch(console.error);
     }
-
-    getUserInfo(jwt)
-      .then((data) => {
-        handleLogin(jwt, data);
-      })
-      .catch(console.error);
   }, []);
 
   return (
