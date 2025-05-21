@@ -35,7 +35,7 @@ function Header({
       </p>
       <ToggleSwitch />
 
-      {currentUser ? ( //When user is LOGGED IN
+      {currentUser ? (
         <div className="header__container">
           <button
             onClick={handleAddClick}
@@ -63,20 +63,11 @@ function Header({
           </Link>
         </div>
       ) : (
-        //When user is LOGGED OUT
         <div>
-          <button
-            onClick={openRegistrationModal}
-            type="button"
-            // className="header__add-clothes-btn"
-          >
+          <button onClick={openRegistrationModal} type="button">
             Sign Up
           </button>
-          <button
-            onClick={openLoginModal}
-            type="button"
-            // className="header__add-clothes-btn"
-          >
+          <button onClick={openLoginModal} type="button">
             Log In
           </button>
         </div>

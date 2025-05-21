@@ -8,7 +8,18 @@
 .card__name {
   position: absolute;
   top: 15px;
+  width: 225px;
   margin: 0;
+  padding: 0 80px 0 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__like-btn {
+  position: relative;
+  top: 23px;
+  left: -50px;
 }
 
 .card__image {
