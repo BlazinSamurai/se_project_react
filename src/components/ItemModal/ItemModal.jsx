@@ -1,7 +1,9 @@
 import "./ItemModal.css";
 import defaultImage from "../../images/default_clothing.png";
 
-function ItemModal({ card, activeModal, onClose, onDeleteClick }) {
+function ItemModal({ card, activeModal, onClose, onDeleteClick, currentUser }) {
+  const isOwn = currentUser ? card.owner === currentUser._id : false;
+
   const cssRules = {
     width: 498,
     height: 610,
@@ -32,14 +34,16 @@ function ItemModal({ card, activeModal, onClose, onDeleteClick }) {
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
           <div>
-            <button
-              // onClick is the 'MouseEventHandler'
-              onClick={onDeleteClick}
-              type="button"
-              className="modal__delete-text"
-            >
-              Delete Item
-            </button>
+            {isOwn && (
+              <button
+                // onClick is the 'MouseEventHandler'
+                onClick={onDeleteClick}
+                type="button"
+                className="modal__delete-text"
+              >
+                Delete Item
+              </button>
+            )}
           </div>
         </footer>
       </div>

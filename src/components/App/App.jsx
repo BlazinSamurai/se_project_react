@@ -176,14 +176,6 @@ function AppContent() {
           setIsLoggedIn(true);
           setToken(data.token);
         });
-
-        //   // After login, instead of navigating always to /profile,
-        //   // navigate to the location that is stored in state. If
-        //   // there is no stored location, we default to
-        //   // redirecting to /profile.
-        //   const redirectPath = location.state?.from?.pathname || "/profile";
-        //   navigate(redirectPath);
-        // }
       })
       .catch(console.error);
   };
@@ -241,16 +233,13 @@ function AppContent() {
   }, []);
 
   useEffect(() => {
-    // console.log("'login' useEffect!");
     const jwt = getToken();
 
     if (!jwt) {
-      console.log("No 'jwt'.");
       setCurrentUser(null);
       setIsLoggedIn(false);
       return;
     } else {
-      console.log("'jwt' exist.");
       getUserInfo(jwt)
         .then((data) => {
           handleLogin(jwt, data);
@@ -345,6 +334,7 @@ function AppContent() {
           activeModal={activeModal}
           onClose={closeActiveModal}
           onDeleteClick={handleDeleteClick}
+          currentUser={currentUser}
         />
 
         <DeleteModal
