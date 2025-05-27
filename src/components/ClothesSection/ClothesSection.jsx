@@ -6,7 +6,7 @@ function ClothesSection({
   currentUser,
   onCardClick,
   clothingItems,
-  onHeartClick,
+  onCardLike,
   onAddNewClick,
 }) {
   return (
@@ -29,7 +29,7 @@ function ClothesSection({
               key={item._id}
               item={item}
               onCardClick={onCardClick}
-              onHeartClick={onHeartClick}
+              onCardLike={onCardLike}
             />
           );
         })}

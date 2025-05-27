@@ -11,7 +11,7 @@ function Main({
   weatherData,
   onCardClick,
   clothingItems,
-  onHeartClick,
+  onCardLike,
 }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
   return (
@@ -36,7 +36,7 @@ function Main({
                   key={item._id}
                   item={item}
                   onCardClick={onCardClick}
-                  onHeartClick={onHeartClick}
+                  onCardLike={onCardLike}
                 />
               );
             })}

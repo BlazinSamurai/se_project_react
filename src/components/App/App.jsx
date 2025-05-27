@@ -272,7 +272,7 @@ function AppContent() {
                     currentUser={currentUser}
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
-                    onHeartClick={handleCardLike}
+                    onCardLike={handleCardLike}
                     onAddNewClick={handleAddClick}
                     editProfile={openEditProfile}
                     logOut={handleLogout}
@@ -288,7 +288,7 @@ function AppContent() {
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
-                  onHeartClick={handleCardLike}
+                  onCardLike={handleCardLike}
                 />
               }
             />

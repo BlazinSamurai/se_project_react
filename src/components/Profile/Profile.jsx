@@ -7,7 +7,7 @@ function Profile({
   currentUser,
   onCardClick,
   clothingItems,
-  onHeartClick,
+  onCardLike,
   onAddNewClick,
   editProfile,
   logOut,
@@ -24,7 +24,7 @@ function Profile({
           currentUser={currentUser}
           onCardClick={onCardClick}
           clothingItems={clothingItems}
-          onHeartClick={onHeartClick}
+          onCardLike={onCardLike}
           onAddNewClick={onAddNewClick}
         />
       </section>
