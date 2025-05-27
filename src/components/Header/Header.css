@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url(/src/vendor/cabinet-grotesk/CabinetGrotesk-Bold.otf);
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -10,7 +15,7 @@
 
 .header__date-and-location {
   margin: 0;
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
@@ -22,7 +27,7 @@
 
 .header__add-clothes-btn {
   margin: 0 20px 0 0;
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
@@ -42,7 +47,7 @@
 
 .header__username {
   margin: 0;
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 20px;
   font-weight: 700;
   line-height: 24.8px;
@@ -57,6 +62,29 @@
   max-width: 40px;
   max-height: 40px;
   border-radius: 18px;
+}
+
+.header__signUp {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  margin-right: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.header__login {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 @media screen and (max-width: 375px) {

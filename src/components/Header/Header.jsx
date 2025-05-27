@@ -64,10 +64,18 @@ function Header({
         </div>
       ) : (
         <div>
-          <button onClick={openRegistrationModal} type="button">
+          <button
+            onClick={openRegistrationModal}
+            type="button"
+            className="header__signUp"
+          >
             Sign Up
           </button>
-          <button onClick={openLoginModal} type="button">
+          <button
+            onClick={openLoginModal}
+            type="button"
+            className="header__login"
+          >
             Log In
           </button>
         </div>
