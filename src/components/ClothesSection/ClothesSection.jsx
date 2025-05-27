@@ -23,15 +23,20 @@ function ClothesSection({
       </div>
       <ul className="clothes-section__list">
         {clothingItems.map((item) => {
-          return (
-            <ItemCard
-              currentUser={currentUser}
-              key={item._id}
-              item={item}
-              onCardClick={onCardClick}
-              onCardLike={onCardLike}
-            />
-          );
+          const isOwn = currentUser ? item.owner === currentUser._id : false;
+          {
+            return (
+              isOwn && (
+                <ItemCard
+                  currentUser={currentUser}
+                  key={item._id}
+                  item={item}
+                  onCardClick={onCardClick}
+                  onCardLike={onCardLike}
+                />
+              )
+            );
+          }
         })}
       </ul>
     </div>
