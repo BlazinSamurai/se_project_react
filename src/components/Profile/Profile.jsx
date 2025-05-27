@@ -4,8 +4,10 @@ import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
 function Profile({
+  currentUser,
   onCardClick,
   clothingItems,
+  onHeartClick,
   onAddNewClick,
   editProfile,
   logOut,
@@ -19,8 +21,10 @@ function Profile({
         {/* for smaller components DO NOT rename the
             prop. Youll just cause more confusion */}
         <ClothesSection
+          currentUser={currentUser}
           onCardClick={onCardClick}
           clothingItems={clothingItems}
+          onHeartClick={onHeartClick}
           onAddNewClick={onAddNewClick}
         />
       </section>

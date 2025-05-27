@@ -6,7 +6,13 @@ import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
-function Main({ weatherData, onCardClick, clothingItems }) {
+function Main({
+  currentUser,
+  weatherData,
+  onCardClick,
+  clothingItems,
+  onHeartClick,
+}) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
   return (
     <main>
@@ -26,9 +32,11 @@ function Main({ weatherData, onCardClick, clothingItems }) {
             .map((item) => {
               return (
                 <ItemCard
+                  currentUser={currentUser}
                   key={item._id}
                   item={item}
                   onCardClick={onCardClick}
+                  onHeartClick={onHeartClick}
                 />
               );
             })}

@@ -41,37 +41,33 @@ function postItems(card, token) {
   });
 }
 
-// PATCH http://localhost:3001/items/:id
-// PATCH updates a resource
-function patchItems(card, id) {
-  return request(`${baseUrl}/items/${id}`, {
-    method: "PATCH",
+// PUT http://localhost:3001/items/:itemId/likes
+// PUT replaces a resource
+// Like: need authorization, and doesn't need entire card information
+function addCardLike(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
+      // Specify an authorization header with an appropriately
+      // formatted value.
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      name: card.name,
-      weather: card.weather,
-      imageUrl: card.link,
-      _id: card.id,
-    }),
   });
 }
 
-// PUT http://localhost:3001/items/:id
-// PUT replaces a resource
-function putItems(card, id) {
-  return request(`${baseUrl}/items/${id}`, {
-    method: "PUT",
+// DELETE
+function removeCardLike(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
+      // Specify an authorization header with an appropriately
+      // formatted value.
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      name: card.name,
-      weather: card.weather,
-      imageUrl: card.link,
-      // _id: card.id,
-    }),
   });
 }
 
@@ -118,8 +114,8 @@ function patchProfile(info, token) {
 export {
   getItems,
   postItems,
-  patchItems,
-  putItems,
+  addCardLike,
+  removeCardLike,
   deleteItems,
   getProfile,
   patchProfile,

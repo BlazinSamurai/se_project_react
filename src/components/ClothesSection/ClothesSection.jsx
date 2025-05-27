@@ -2,7 +2,13 @@ import "./ClothesSection.css";
 
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ onCardClick, clothingItems, onAddNewClick }) {
+function ClothesSection({
+  currentUser,
+  onCardClick,
+  clothingItems,
+  onHeartClick,
+  onAddNewClick,
+}) {
   return (
     <div className="clothes-section">
       <div className="clothes-section__item-btn-group">
@@ -18,7 +24,13 @@ function ClothesSection({ onCardClick, clothingItems, onAddNewClick }) {
       <ul className="clothes-section__list">
         {clothingItems.map((item) => {
           return (
-            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+            <ItemCard
+              currentUser={currentUser}
+              key={item._id}
+              item={item}
+              onCardClick={onCardClick}
+              onHeartClick={onHeartClick}
+            />
           );
         })}
       </ul>

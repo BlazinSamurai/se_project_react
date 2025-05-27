@@ -152,10 +152,6 @@ function AppContent() {
     setCurrentUser(null);
     setIsLoggedIn(false);
     setToken(null);
-
-    const token = getToken();
-    console.log("Inside 'handleLogout'!");
-    console.log(token);
   };
 
   const handleEditProfile = (name, avatar) => {
@@ -192,6 +188,33 @@ function AppContent() {
       .catch(console.error);
   };
 
+  const handleCardLike = ({ _id }, isLiked) => {
+    const token = getToken();
+
+    // Check if this card is not currently liked
+    !isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        api
+          // the first argument is the card's id
+          .addCardLike(_id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? updatedCard.data : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        api
+          // the first argument is the card's id
+          .removeCardLike(_id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? updatedCard.data : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
   // we can use a useEffect with an empty dependency array to
   // specify code that runs a single time when the component
   // first loads.
@@ -209,17 +232,6 @@ function AppContent() {
   // These variables can be props or the internal state
   // variables of the current component
   useEffect(() => {
-    // if (!currentUser) {
-    //   console.log("No User logged in! " + currentUser);
-    // } else {
-    //   console.log("User logged in!!! " + currentUser);
-    //   api
-    //     .getItems()
-    //     .then((data) => {
-    //       setClothingItems([...data]);
-    //     })
-    //     .catch(console.error);
-    // }
     api
       .getItems()
       .then((data) => {
@@ -268,8 +280,10 @@ function AppContent() {
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Profile
+                    currentUser={currentUser}
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onHeartClick={handleCardLike}
                     onAddNewClick={handleAddClick}
                     editProfile={openEditProfile}
                     logOut={handleLogout}
@@ -281,9 +295,11 @@ function AppContent() {
               path="/"
               element={
                 <Main
+                  currentUser={currentUser}
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onHeartClick={handleCardLike}
                 />
               }
             />

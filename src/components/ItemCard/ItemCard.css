@@ -20,6 +20,7 @@
   position: relative;
   top: 23px;
   left: -50px;
+  cursor: pointer;
 }
 
 .card__image {
