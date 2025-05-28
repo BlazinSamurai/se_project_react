@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
+  const { values, handleChange, errors, isValid, setValues, resetForm } =
+    useFormAndValidation();
   const [name, setName] = useState("");
   const [link, setUrl] = useState("");
   const [weather, setWeather] = useState(null);
@@ -38,7 +42,7 @@ const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
           the style below gets passed in
           as the 'child' in ModalWithForm */}
       {/* TODO - ADD SOME VALIDATIONS */}
-      <label htmlFor="name" className="modal__label modal__label_span">
+      <label htmlFor="addItem_name" className="modal__label modal__label_span">
         Name{" "}
         <input
           type="text"
@@ -52,7 +56,10 @@ const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
         />
         <span className="modal__span-divider"></span>
       </label>
-      <label htmlFor="imageUrl" className="modal__label modal__label_span">
+      <label
+        htmlFor="addItem_imageUrl"
+        className="modal__label modal__label_span"
+      >
         Image{" "}
         <input
           type="url"

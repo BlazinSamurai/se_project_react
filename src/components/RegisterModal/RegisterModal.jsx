@@ -47,7 +47,10 @@ const RegisterModal = ({
       signupState={true}
       switchButtonText="or Log in"
     >
-      <label htmlFor="email" className="modal__label modal__label_span">
+      <label
+        htmlFor="Register_email"
+        className="modal__label modal__label_span"
+      >
         Email*{" "}
         <input
           name="email"
@@ -55,14 +58,17 @@ const RegisterModal = ({
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="reg_email"
+          id="Register_email"
           placeholder="Email"
           value={email}
           onChange={handleEmailChange}
         />
         <span className="modal__span-divider"></span>
       </label>
-      <label htmlFor="password" className="modal__label modal__label_span">
+      <label
+        htmlFor="Register_password"
+        className="modal__label modal__label_span"
+      >
         Password*{" "}
         <input
           name="password"
@@ -70,14 +76,14 @@ const RegisterModal = ({
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="reg_password"
+          id="Register_password"
           placeholder="Password"
           value={password}
           onChange={handlePasswordChange}
         />
         <span className="modal__span-divider"></span>
       </label>
-      <label htmlFor="name" className="modal__label modal__label_span">
+      <label htmlFor="Register_name" className="modal__label modal__label_span">
         Name{" "}
         <input
           name="name"
@@ -85,21 +91,24 @@ const RegisterModal = ({
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="reg_name"
+          id="Register_name"
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
         />
         <span className="modal__span-divider"></span>
       </label>
-      <label htmlFor="avatarUrl" className="modal__label modal__label_span">
+      <label
+        htmlFor="Register_avatarUrl"
+        className="modal__label modal__label_span"
+      >
         Avatar URL{" "}
         <input
           name="avatarUrl"
           type="url"
           className="modal__input"
           minLength="1"
-          id="reg_avatarUrl"
+          id="Register_avatarUrl"
           placeholder="Avatar URL"
           value={avatarUrl}
           onChange={handleAvatarUrlChange}

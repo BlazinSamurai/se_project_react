@@ -17,7 +17,6 @@ function SideBar({ editProfile, logOut }) {
         />
         <p className="sidebar__display-info_username"> {currentUser.name}</p>
       </div>
-      {/* <Link to={"/profile/change-profile-data"}> dont need to add a new route */}
       <button
         onClick={editProfile}
         type="button"

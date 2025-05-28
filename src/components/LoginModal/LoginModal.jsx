@@ -42,7 +42,7 @@ const LogInModal = ({
       signupState={false}
       switchButtonText="or Register"
     >
-      <label htmlFor="email" className="modal__label modal__label_span">
+      <label htmlFor="Login_email" className="modal__label modal__label_span">
         Email*{" "}
         <input
           name="email"
@@ -50,7 +50,7 @@ const LogInModal = ({
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="login_email"
+          id="Login_email"
           placeholder="Email"
           value={data.email}
           onChange={handleChange}
@@ -58,7 +58,7 @@ const LogInModal = ({
         <span className="modal__span-divider"></span>
       </label>
       <label
-        htmlFor="password"
+        htmlFor="Login_password"
         className="modal__label modal__label_span"
         style={cssRules}
       >
@@ -69,7 +69,7 @@ const LogInModal = ({
           className="modal__input"
           minLength="1"
           maxLength="30"
-          id="login_password"
+          id="Login_password"
           placeholder="Password"
           value={data.password}
           onChange={handleChange}

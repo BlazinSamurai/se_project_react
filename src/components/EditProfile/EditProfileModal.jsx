@@ -34,7 +34,7 @@ function EditProfileModal({ activeModal, onClose, changeProfile }) {
         <div className="modal__content-edit-profile">
           <h1 className="modal__title-edit-profile"> Change profile data </h1>
           <label
-            htmlFor="name"
+            htmlFor="EditProfile_name"
             className="modal__label modal__label_span modal__label_padding-remover"
           >
             Name *{" "}
@@ -43,7 +43,7 @@ function EditProfileModal({ activeModal, onClose, changeProfile }) {
               className="modal__input"
               minLength="1"
               maxLength="30"
-              id="name"
+              id="EditProfile_name"
               placeholder="Name"
               value={name}
               onChange={handleNameChange}
@@ -51,7 +51,7 @@ function EditProfileModal({ activeModal, onClose, changeProfile }) {
             <span className="modal__span-divider"></span>
           </label>
           <label
-            htmlFor="imageUrl"
+            htmlFor="EditProfile_imageUrl"
             className="modal__label modal__label_span modal__label_padding-remover"
           >
             Avatar *{" "}
@@ -59,7 +59,7 @@ function EditProfileModal({ activeModal, onClose, changeProfile }) {
               type="url"
               className="modal__input"
               minLength="1"
-              id="imageUrl"
+              id="EditProfile_imageUrl"
               placeholder="Avatar URL"
               value={avatar}
               onChange={handleAvatarChange}
