@@ -1,14 +1,17 @@
 import "./ClothesSection.css";
 
+import { useContext } from "react";
+import { CurrentUserContext } from "../../Context/CurrentUserContext";
+
 import ItemCard from "../ItemCard/ItemCard";
 
 function ClothesSection({
-  currentUser,
   onCardClick,
   clothingItems,
   onCardLike,
   onAddNewClick,
 }) {
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <div className="clothes-section">
       <div className="clothes-section__item-btn-group">
@@ -28,7 +31,6 @@ function ClothesSection({
             return (
               isOwn && (
                 <ItemCard
-                  currentUser={currentUser}
                   key={item._id}
                   item={item}
                   onCardClick={onCardClick}

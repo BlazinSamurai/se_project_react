@@ -1,7 +1,12 @@
 import "./ItemModal.css";
 import defaultImage from "../../images/default_clothing.png";
 
-function ItemModal({ card, activeModal, onClose, onDeleteClick, currentUser }) {
+import { useContext } from "react";
+import { CurrentUserContext } from "../../Context/CurrentUserContext";
+
+function ItemModal({ card, activeModal, onClose, onDeleteClick }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   const isOwn = currentUser ? card.owner === currentUser._id : false;
 
   const cssRules = {

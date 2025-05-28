@@ -4,7 +4,6 @@ import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
 function Profile({
-  currentUser,
   onCardClick,
   clothingItems,
   onCardLike,
@@ -21,7 +20,6 @@ function Profile({
         {/* for smaller components DO NOT rename the
             prop. Youll just cause more confusion */}
         <ClothesSection
-          currentUser={currentUser}
           onCardClick={onCardClick}
           clothingItems={clothingItems}
           onCardLike={onCardLike}

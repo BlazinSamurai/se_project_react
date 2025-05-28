@@ -60,7 +60,7 @@ function AppContent() {
   // userData: is typically a temporary state used to store form
   // data during the registration/login process
   const [userData, setUserData] = useState({ username: "", email: "" });
-  const { currentUser, isLoggedIn, setCurrentUser, setIsLoggedIn } =
+  const { isLoggedIn, setCurrentUser, setIsLoggedIn } =
     useContext(CurrentUserContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -269,7 +269,6 @@ function AppContent() {
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Profile
-                    currentUser={currentUser}
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}
@@ -284,7 +283,6 @@ function AppContent() {
               path="/"
               element={
                 <Main
-                  currentUser={currentUser}
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
@@ -334,7 +332,6 @@ function AppContent() {
           activeModal={activeModal}
           onClose={closeActiveModal}
           onDeleteClick={handleDeleteClick}
-          currentUser={currentUser}
         />
 
         <DeleteModal

@@ -3,9 +3,12 @@ import "./ItemCard.css";
 import heart from "../../images/Like_button.svg";
 import filledHeart from "../../images/Like_button_filled.svg";
 
-//destructored here so we don't have to use props.item
-//item is the "cards", and onCardClick is the handleCardClick function
-function ItemCard({ currentUser, item, onCardClick, onCardLike }) {
+import { useContext } from "react";
+import { CurrentUserContext } from "../../Context/CurrentUserContext";
+
+function ItemCard({ item, onCardClick, onCardLike }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   const isLiked = currentUser
     ? item.likes.some((id) => id === currentUser._id)
     : false;
