@@ -112,6 +112,8 @@ function patchProfile(info, token) {
 }
 
 export {
+  checkResponse,
+  request,
   getItems,
   postItems,
   addCardLike,
