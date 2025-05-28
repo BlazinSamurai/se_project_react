@@ -12,6 +12,7 @@ function ModalWithForm({
   onSwitchModal,
   loginState,
   signupState,
+  switchButtonText,
 }) {
   const handleSwitchModal = () => {
     onSwitchModal();
@@ -50,7 +51,7 @@ function ModalWithForm({
                   type="button"
                   className="modal__button-text modal__button-login"
                 >
-                  or Log in
+                  {switchButtonText}
                 </button>
               ) : null}
             </div>
@@ -62,7 +63,7 @@ function ModalWithForm({
                   type="button"
                   className="modal__button-text modal__button-register"
                 >
-                  or Register
+                  {switchButtonText}
                 </button>
               ) : null}
             </div>

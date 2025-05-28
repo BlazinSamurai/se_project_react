@@ -21,8 +21,6 @@ const LogInModal = ({
     }));
   };
 
-  // handleSubmit prevents the default browser behavior and calls
-  // the login handler.
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLoginSubmit(data);
@@ -42,6 +40,7 @@ const LogInModal = ({
       onSwitchModal={onSwitchModal}
       loginState={true}
       signupState={false}
+      switchButtonText="or Register"
     >
       <label htmlFor="email" className="modal__label modal__label_span">
         Email*{" "}
@@ -77,8 +76,6 @@ const LogInModal = ({
         />
         <span className="modal__span-divider"></span>
       </label>
-      {/* Can pass in a second button, not sure if this is the better way */}
-      {/* <button type="button"> or Register </button> */}
     </ModalWithForm>
   );
 };
