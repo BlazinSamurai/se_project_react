@@ -54,6 +54,7 @@ const LogInModal = ({
           placeholder="Email"
           value={data.email}
           onChange={handleChange}
+          required
         />
         <span className="modal__span-divider"></span>
       </label>
@@ -73,6 +74,7 @@ const LogInModal = ({
           placeholder="Password"
           value={data.password}
           onChange={handleChange}
+          required
         />
         <span className="modal__span-divider"></span>
       </label>

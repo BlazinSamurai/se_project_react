@@ -1,5 +1,3 @@
-// wrapper for the whole application
-// therefore, is the parent of other top-level components
 import React, { useContext, useEffect, useState } from "react";
 import {
   Routes,
@@ -156,10 +154,13 @@ function AppContent() {
 
   const handleEditProfile = (name, avatar) => {
     const token = getToken();
-    api.patchProfile({ name, avatar }, token).then((info) => {
-      setCurrentUser(info);
-      closeActiveModal();
-    });
+    api
+      .patchProfile({ name, avatar }, token)
+      .then((info) => {
+        setCurrentUser(info);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   // handleLogin accepts one parameter: an object with two properties.
@@ -171,11 +172,13 @@ function AppContent() {
 
     signIn({ email, password })
       .then((data) => {
-        getUserInfo(data.token).then((info) => {
-          setCurrentUser(info);
-          setIsLoggedIn(true);
-          setToken(data.token);
-        });
+        getUserInfo(data.token)
+          .then((info) => {
+            setCurrentUser(info);
+            setIsLoggedIn(true);
+            setToken(data.token);
+          })
+          .catch(console.error);
       })
       .catch(console.error);
   };

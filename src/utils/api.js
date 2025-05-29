@@ -86,13 +86,6 @@ function deleteItems(id, token) {
   });
 }
 
-// GET   http://localhost:3001/profile
-function getProfile() {
-  return request(`${baseUrl}/users/me`, {
-    method: "GET",
-  });
-}
-
 // PATCH
 function patchProfile(info, token) {
   return request(`${baseUrl}/users/me`, {
@@ -119,6 +112,5 @@ export {
   addCardLike,
   removeCardLike,
   deleteItems,
-  getProfile,
   patchProfile,
 };

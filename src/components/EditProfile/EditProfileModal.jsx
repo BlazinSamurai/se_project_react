@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import { getUserInfo } from "../../utils/auth";
+import { getToken } from "../../utils/token";
 
 import "./EditProfileModal.css";
 
 function EditProfileModal({ activeModal, onClose, changeProfile }) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [prevName, setPrevName] = useState("");
+  const [prevAvatar, setPrevAvatar] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -23,6 +27,18 @@ function EditProfileModal({ activeModal, onClose, changeProfile }) {
     maxWidth: 496,
     height: 304,
   };
+
+  useEffect(() => {
+    const jwt = getToken();
+
+    getUserInfo(jwt)
+      .then((data) => {
+        setName(data.name);
+        setAvatar(data.avatar);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <div className={`modal ${activeModal === "editProfile" && "modal_opened"}`}>
       <div className="modal__content" style={cssRules}>

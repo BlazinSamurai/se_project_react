@@ -62,6 +62,7 @@ const RegisterModal = ({
           placeholder="Email"
           value={email}
           onChange={handleEmailChange}
+          required
         />
         <span className="modal__span-divider"></span>
       </label>
@@ -80,6 +81,7 @@ const RegisterModal = ({
           placeholder="Password"
           value={password}
           onChange={handlePasswordChange}
+          required
         />
         <span className="modal__span-divider"></span>
       </label>

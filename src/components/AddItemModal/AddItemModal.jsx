@@ -53,6 +53,7 @@ const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
           placeholder="Name"
           value={name}
           onChange={handleNameChange}
+          required
         />
         <span className="modal__span-divider"></span>
       </label>
@@ -69,6 +70,7 @@ const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
           placeholder="Image URL"
           value={link}
           onChange={handleUrlChange}
+          required
         />
         <span className="modal__span-divider"></span>
       </label>
