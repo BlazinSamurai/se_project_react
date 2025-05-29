@@ -105,6 +105,7 @@ function patchProfile(info, token) {
 }
 
 export {
+  baseUrl,
   checkResponse,
   request,
   getItems,

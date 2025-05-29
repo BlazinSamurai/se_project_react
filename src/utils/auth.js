@@ -1,6 +1,4 @@
-import { checkResponse, request } from "./api";
-
-const baseUrl = "http://localhost:3001";
+import { baseUrl, request } from "./api";
 
 // POST /signup for user registration
 function signUp(info) {
