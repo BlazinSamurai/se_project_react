@@ -40,6 +40,8 @@ const LogInModal = ({
       onSwitchModal={onSwitchModal}
       loginState={true}
       signupState={false}
+      editProfileState={false}
+      addItemState={false}
       switchButtonText="or Register"
     >
       <label htmlFor="Login_email" className="modal__label modal__label_span">

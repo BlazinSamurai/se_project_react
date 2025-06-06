@@ -45,6 +45,8 @@ const RegisterModal = ({
       onSwitchModal={onSwitchModal}
       loginState={false}
       signupState={true}
+      editProfileState={false}
+      addItemState={false}
       switchButtonText="or Log in"
     >
       <label

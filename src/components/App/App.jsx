@@ -1,18 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import {
-  defaultClothingItems,
-  coordinates,
-  APIkey,
-  temp,
-} from "../../utils/constants";
+import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTempUnitContext } from "../../Context/CurrentTempUnitContext";
 import {
   CurrentUserContext,
@@ -57,11 +46,9 @@ function AppContent() {
   const [clothingItems, setClothingItems] = useState([]);
   // userData: is typically a temporary state used to store form
   // data during the registration/login process
-  const [userData, setUserData] = useState({ username: "", email: "" });
+  const [userData] = useState({ username: "", email: "" });
   const { isLoggedIn, setCurrentUser, setIsLoggedIn } =
     useContext(CurrentUserContext);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -345,9 +332,9 @@ function AppContent() {
         />
 
         <EditProfileModal
-          activeModal={activeModal}
-          onClose={closeActiveModal}
+          isOpen={activeModal === "editProfile"}
           changeProfile={handleEditProfile}
+          closeActiveModal={closeActiveModal}
         />
       </CurrentTempUnitContext.Provider>
     </div>

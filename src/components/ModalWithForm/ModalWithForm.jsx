@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import "./ModalWithForm.css";
 
 function ModalWithForm({
@@ -12,6 +10,8 @@ function ModalWithForm({
   onSwitchModal,
   loginState,
   signupState,
+  editProfileState,
+  addItemState,
   switchButtonText,
 }) {
   const handleSwitchModal = () => {
@@ -27,19 +27,55 @@ function ModalWithForm({
       <div
         className={` 
           ${loginState && "modal__content modal__content-login"}
-          ${!loginState && "modal__content "}
+          ${(signupState || addItemState) && "modal__content "}
+          ${editProfileState && "modal__content modal__content-editProfile"}
         `}
       >
-        <h2 className="modal__title">{title}</h2>
+        <h2 // FORM TITLE
+          className={`
+            ${editProfileState && "modal__title-editProfile"}
+            ${!editProfileState && "modal__title "}`}
+        >
+          {title}
+        </h2>
         {/* You can use self closing tags if there are no children */}
         <button onClick={handleClose} type="button" className="modal__close" />
-        <form action="" className="modal__form" onSubmit={onSubmit}>
+        <form // MODAL FORM
+          action=""
+          className={`
+            ${editProfileState && "modal__form modal__form-editProfile"}
+            ${!editProfileState && "modal__form"}`}
+          onSubmit={onSubmit}
+        >
           {children}
-          <div className="modal__button-container">
-            <button
+          <div // BUTTON CONTAINER
+            className={`
+              ${
+                editProfileState &&
+                "modal__button-container modal__button-container-editProfile"
+              }
+              ${
+                addItemState &&
+                "modal__button-container modal__button-container-addItem"
+              }
+              ${!editProfileState && "modal__button-container"}`}
+          >
+            <button // SUBMIT BUTTON
               onClick={handleClose}
               type="submit"
-              className="modal__button-text"
+              className={`
+                ${
+                  editProfileState &&
+                  "modal__button-text modal__button-style modal__button-width-editProfile"
+                }
+                ${
+                  addItemState &&
+                  "modal__button-text modal__button-style modal__button-width-addItem"
+                }
+                ${
+                  (loginState || signupState) &&
+                  "modal__button-text modal__button-style"
+                }`}
             >
               {buttonText}
             </button>

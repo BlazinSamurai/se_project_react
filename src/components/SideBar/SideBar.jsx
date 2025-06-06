@@ -5,8 +5,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../Context/CurrentUserContext";
 
 function SideBar({ editProfile, logOut }) {
-  const { currentUser, setCurrentUser, setIsLoggedIn } =
-    useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
       <div className="sidebar__display-info">

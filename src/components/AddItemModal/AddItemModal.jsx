@@ -1,12 +1,8 @@
-import React, { useState } from "react";
-
-import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
-  const { values, handleChange, errors, isValid, setValues, resetForm } =
-    useFormAndValidation();
   const [name, setName] = useState("");
   const [link, setUrl] = useState("");
   const [weather, setWeather] = useState(null);
@@ -37,6 +33,8 @@ const AddItemModal = ({ isOpen, onAddItem, closeActiveModal }) => {
       onSubmit={handleSubmit}
       loginState={false}
       signupState={false}
+      editProfileState={false}
+      addItemState={true}
     >
       {/* htmlFor and id should match, 
           the style below gets passed in
