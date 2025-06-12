@@ -9,6 +9,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "homepage": "https://yourdigitalcloset.csproject.org",
+  "deploy": "npm run build && scp -r ./dist/* damianlavin75@yourdigitalcloset.csproject.org:/home/damianlavin75/frontend",
   "dependencies": {
     "express": "^4.21.1",
     "jquery": "^3.7.1",
