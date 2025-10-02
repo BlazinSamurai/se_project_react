@@ -69,14 +69,11 @@ Design for the whole application. [WTWR_Design](https://www.figma.com/design/bfV
 **New User Profile View**
 ![](src/images/WTWR_ss/new_user_profile_no_cards.png)
 
-**Adding A Clothing Card**
-![](src/images/WTWR_ss/new_user_profile_add_card.png)
-
 **Editing Profile Information**
 ![](src/images/WTWR_ss/new_user_profile_edit_profile_modal.png)
 
-**Home View With Clothing Cards**
-![](src/images/WTWR_ss/home_w_cards_new_user.png)
+**Adding A Clothing Card**
+![](src/images/WTWR_ss/new_user_profile_add_card.png)
 
 **Profile View With Clothing Cards**
 ![](src/images/WTWR_ss/profile_with_cards.png)
@@ -86,3 +83,12 @@ Design for the whole application. [WTWR_Design](https://www.figma.com/design/bfV
 
 **Delete Confirmation Modal**
 ![](src/images/WTWR_ss/delete_confirm_modal.png)
+
+**Home View when User logs out**
+![](src/images/WTWR_ss/home_w_cards_no_user.png)
+
+**Home View with previous user card on display**
+
+- The important thing to note here is that the clothing cards on display where the previous user's clothing cards. The current user can view them, preview them, and like them and if the user goes to their profile view and card that is displayed in the home view that is not their will not appear in their profile view. The current user cannot delete the cards either, the red delete button doesn't render, as shown below.
+  ![](src/images/WTWR_ss/home_w_cards_new_user.png)
+  ![](src/images/WTWR_ss/home_w_cards_new_user_preview_item.png)
