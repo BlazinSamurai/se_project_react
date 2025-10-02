@@ -45,4 +45,4 @@ Design for the whole application. [WTWR_Design](https://www.figma.com/design/bfV
 ## Images of Application
 
 **Home View, No user signed In**
-![](src/images/WTWR_ss/wtwr_home_no_user.png)
+![Some Text Here](src/images/WTWR_ss/wtwr_home_no_user.png)
