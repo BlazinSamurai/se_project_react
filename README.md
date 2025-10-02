@@ -1,11 +1,48 @@
-# React + Vite
+# What to Wear(WTWR)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech Stack
 
-Currently, two official plugins are available:
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="30" alt="html5 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="30" alt="css3 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="30" alt="git logo"  />
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Description
+
+'What to Wear' is a digital closet application where a user can sort through clothing cards depending on what the temperature is.
+
+**Some features include:**
+
+- Creating an account
+- Change display temperature unit
+- Add clothing cards
+- Like a card or unlike a card
+- Delete a card
+- Two display modes, home view and the profile view
+
+**Home View**
+
+- Clothing cards are sorted to display based on the temperature
+- New users can like previous users clothing cards on display after logout
+
+**Profile View**
+
+- Displays all clothing cards in the database that the user has created
+- Edit profile picture or profile name
+
+## Figma Design
+
+Design for the whole application. [WTWR_Design](https://www.figma.com/design/bfVOvqlLmoKZ5lpro8WWBe/Sprint-14_-WTWR?node-id=0-1&p=f&t=ECfNwaaTAeghZ06c-0)
 
 - Link to the backend of this project:
   [here](https://github.com/BlazinSamurai/se_project_express.git)
+
+## Images of Application
+
+**Home View, No user signed In**
+![](src/images/WTWR_ss/wtwr_home_no_user.png)
