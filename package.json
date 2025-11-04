@@ -13,11 +13,13 @@
   "deploy": "npm run build && scp -r ./dist/* damianlavin75@yourdigitalcloset.csproject.org:/home/damianlavin75/frontend",
   "dependencies": {
     "express": "^4.21.1",
+    "formik": "^2.4.6",
     "jquery": "^3.7.1",
     "mongoose": "^8.14.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2"
+    "react-router-dom": "^6.26.2",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

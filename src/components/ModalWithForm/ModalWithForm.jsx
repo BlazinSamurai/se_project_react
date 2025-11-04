@@ -7,6 +7,7 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
+  isValid,
   onSwitchModal,
   loginState,
   signupState,
@@ -38,7 +39,6 @@ function ModalWithForm({
         >
           {title}
         </h2>
-        {/* You can use self closing tags if there are no children */}
         <button onClick={handleClose} type="button" className="modal__close" />
         <form // MODAL FORM
           action=""
@@ -63,6 +63,8 @@ function ModalWithForm({
             <button // SUBMIT BUTTON
               onClick={handleClose}
               type="submit"
+              // value="disabled"
+              disabled={!isValid}
               className={`
                 ${
                   editProfileState &&
