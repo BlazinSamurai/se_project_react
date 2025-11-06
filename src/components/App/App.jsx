@@ -95,7 +95,7 @@ function AppContent() {
     setActiveModal(modalType);
   };
 
-  const handleAddItemSubmit = (name, weather, link) => {
+  const handleAddItemSubmit = (name, link, weather) => {
     const token = getToken();
     api
       .postItems({ name, weather, link }, token)
@@ -124,6 +124,7 @@ function AppContent() {
         setCurrentUser(user);
         setIsLoggedIn(true);
       })
+      // have to start here to get server side error to the user
       .catch(console.error);
   };
 

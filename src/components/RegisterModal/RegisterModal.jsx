@@ -176,9 +176,7 @@ const RegisterModal = ({
   useEffect(() => {
     if (isEmailValid && isPasswordValid && isNameValid && isUrlValid) {
       setIsValid(true);
-      console.log("Tots valid!");
     } else {
-      console.log("Tots not valid!");
       setIsValid(false);
     }
   }, [isEmailValid, isPasswordValid, isNameValid, isUrlValid]);

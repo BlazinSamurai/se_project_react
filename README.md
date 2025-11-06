@@ -89,6 +89,6 @@ Design for the whole application. [WTWR_Design](https://www.figma.com/design/bfV
 
 **Home View with previous user card on display**
 
-- The important thing to note here is that the clothing cards on display where the previous user's clothing cards. The current user can view them, preview them, and like them and if the user goes to their profile view and card that is displayed in the home view that is not their will not appear in their profile view. The current user cannot delete the cards either, the red delete button doesn't render, as shown below.
+- The important thing to note here is that the clothing cards on display were the previous user's clothing cards. The current user can view them, preview them, and like them and if the user goes to their profile view the cards that were on display in the home view will not appear in their profile view. The current user cannot delete the cards either, the red delete button doesn't render, as shown below.
   ![](src/images/WTWR_ss/home_w_cards_new_user.png)
   ![](src/images/WTWR_ss/home_w_cards_new_user_preview_item.png)

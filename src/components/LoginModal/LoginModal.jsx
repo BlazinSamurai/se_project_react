@@ -37,6 +37,7 @@ const LogInModal = ({
       isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
+      isValid={true}
       onSwitchModal={onSwitchModal}
       loginState={true}
       signupState={false}
