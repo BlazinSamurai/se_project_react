@@ -17,8 +17,6 @@ function Profile({
         <SideBar editProfile={editProfile} logOut={logOut} />
       </section>
       <section className="profile__clothing-items">
-        {/* for smaller components DO NOT rename the
-            prop. Youll just cause more confusion */}
         <ClothesSection
           onCardClick={onCardClick}
           clothingItems={clothingItems}

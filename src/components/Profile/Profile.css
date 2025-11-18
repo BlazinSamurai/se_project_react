@@ -2,3 +2,15 @@
   display: flex;
   column-gap: 116px;
 }
+
+@media screen and (max-width: 770px) {
+  .profile {
+    column-gap: 0;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .profile {
+    flex-direction: column;
+  }
+}

@@ -5,7 +5,6 @@ import { CurrentUserContext } from "../../Context/CurrentUserContext";
 import "./Header.css";
 
 import logo from "../../images/Logo.svg";
-import avatar from "../../images/Ellipse 18.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 function Header({
@@ -33,6 +32,7 @@ function Header({
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
       </p>
+
       <ToggleSwitch />
 
       {currentUser ? (
@@ -63,7 +63,7 @@ function Header({
           </Link>
         </div>
       ) : (
-        <div>
+        <div className="header__buttons-container">
           <button
             onClick={openRegistrationModal}
             type="button"

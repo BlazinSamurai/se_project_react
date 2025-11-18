@@ -33,3 +33,9 @@
   list-style-type: none;
   gap: 21px;
 }
+
+@media screen and (max-width: 430px) {
+  .clothes-section__list {
+    justify-content: center;
+  }
+}

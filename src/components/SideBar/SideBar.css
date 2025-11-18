@@ -9,9 +9,13 @@
   row-gap: 24px;
 }
 
+.sidebar__link {
+  text-decoration: none;
+}
+
 .sidebar__display-info {
   display: flex;
-  gap: 16px;
+  gap: 12px;
 }
 
 .sidebar__display-info_avatar {
@@ -21,12 +25,14 @@
 }
 
 .sidebar__display-info_username {
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 20px;
   font-weight: 700;
   line-height: 24.8px;
   width: 157px;
   height: 25px;
+  cursor: pointer;
+  color: #000;
 }
 
 .sidebar__change-profile-data {
@@ -40,6 +46,8 @@
   padding: 0;
   cursor: pointer;
   border: none;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .sidebar__logout {
@@ -53,4 +61,26 @@
   padding: 0;
   cursor: pointer;
   border: none;
+}
+
+@media screen and (max-width: 430px) {
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sidebar__display-info,
+  .sidebar__display-info_avatar,
+  .sidebar__display-info_username {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  .sidebar__change-profile-data {
+    position: relative;
+    left: -20%;
+    padding: 0 0 0 15px;
+    text-overflow: ellipsis;
+  }
 }

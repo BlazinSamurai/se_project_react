@@ -4,13 +4,12 @@
 
 .page_content {
   max-width: 1360px;
-  margin: 0 auto;
+  margin: 18px auto;
   padding: 0 20px;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 430px) {
   .page_content {
-    width: 375px;
-    padding: 18px 16px 0;
+    width: 90%;
   }
 }

@@ -45,3 +45,19 @@
 .switch__active {
   color: white;
 }
+
+@media screen and (max-width: 600px) {
+  .switch__box {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .switch {
+    margin: 0 auto;
+  }
+
+  .switch__box {
+    margin-right: 0;
+  }
+}

@@ -20,16 +20,14 @@
   gap: 21px;
 }
 
-@media screen and (max-width: 375px) {
-  .cards__text {
-    width: 340px;
-    position: absolute;
-    top: 246px;
-  }
-
+@media screen and (max-width: 721px) {
   .cards__list {
-    max-width: 343px;
-    display: grid;
-    grid-template-columns: 164px 164px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .cards__list {
+    justify-content: center;
   }
 }
